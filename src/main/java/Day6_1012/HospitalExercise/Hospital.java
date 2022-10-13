@@ -59,4 +59,22 @@ VALUES ('A1120837','서울특별시 금천구 벚꽃로 286 삼성리더스타�
         }
         return query;
     }
+
+    public String toTupleString(boolean lastTuple) {
+        this.address = this.address.replace("'", "");
+        String tuple = "('" + this.id + "','" + this.address + "','" + this.district + "','" + this.category + "'," +
+                this.emergency_room + ",'" + this.name + "',";
+        if(this.subdivision != null) {
+            tuple += "'" + this.subdivision + "')";
+        } else {
+            tuple += "null)";
+        }
+
+        if (lastTuple == false) {
+            tuple += ",\n";
+        } else {
+            tuple += ";";
+        }
+        return tuple;
+    }
 }

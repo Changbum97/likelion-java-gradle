@@ -34,4 +34,21 @@ public class MakeSqlFile {
         bw.flush();
         bw.close();
     }
+
+    public void write2(List<Hospital> hospitals) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+
+        bw.write("INSERT INTO `likelion-db`.`seoul_hospital` (`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`) VALUES \n");
+        int idx = 0;
+        for(Hospital hospital : hospitals) {
+            idx ++;
+            if(idx == hospitals.size()) {
+                bw.write(hospital.toTupleString(true));
+            } else {
+                bw.write(hospital.toTupleString(false));
+            }
+        }
+        bw.flush();
+        bw.close();
+    }
 }
