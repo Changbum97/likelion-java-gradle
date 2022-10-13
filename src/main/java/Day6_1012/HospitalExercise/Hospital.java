@@ -20,13 +20,22 @@ public class Hospital {
     }
 
     public String getId() {
-        return this.id;
+        return id;
     }
     public String getAddress() {
-        return this.address;
+        return address;
     }
     public String getDistrict() {
-        return this.district;
+        return district;
+    }
+    public char getCategory() {
+        return category;
+    }
+    public int getEmergency_room() {
+        return emergency_room;
+    }
+    public String getName() {
+        return name;
     }
 
     private String makeSubdivision(String name) {
