@@ -22,6 +22,9 @@ public class Hospital {
     public String getId() {
         return this.id;
     }
+    public String getAddress() {
+        return this.address;
+    }
 
     private String makeSubdivision(String name) {
         String[] subdivisionList = new String[]
