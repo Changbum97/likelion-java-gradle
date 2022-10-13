@@ -27,6 +27,7 @@ public class MakeSqlFile {
 
     public void write(List<Hospital> hospitals) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+
         for(Hospital hospital : hospitals) {
             bw.write(hospital.toSQLQuery() + "\n");
         }
