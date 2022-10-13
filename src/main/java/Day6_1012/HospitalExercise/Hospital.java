@@ -25,6 +25,9 @@ public class Hospital {
     public String getAddress() {
         return this.address;
     }
+    public String getDistrict() {
+        return this.district;
+    }
 
     private String makeSubdivision(String name) {
         String[] subdivisionList = new String[]
