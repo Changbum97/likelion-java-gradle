@@ -9,14 +9,15 @@ public class Hospital {
     private String name;
     private String subdivision;
 
-    public Hospital(String id, String address, String category, String emergency_room, String name) {
+    public Hospital(String id, String address, String district, char category,
+                    int emergency_room, String name, String subdivision) {
         this.id = id;
         this.address = address;
-        this.district = address.split(" ")[0] + " " + address.split(" ")[1];
-        this.category = category.charAt(0);
-        this.emergency_room = Integer.parseInt(emergency_room);
+        this.district = district;
+        this.category = category;
+        this.emergency_room = emergency_room;
         this.name = name;
-        this.subdivision = this.makeSubdivision(name);
+        this.subdivision = subdivision;
     }
 
     public String getId() {
@@ -39,26 +40,6 @@ public class Hospital {
     }
     public String getSubdivision() {
         return subdivision;
-    }
-
-    private String makeSubdivision(String name) {
-        String[] subdivisionList = new String[]
-                {"치과", "성형외과", "한방병원", "한의원", "영상의학과", "이비인후과", "소아청소년과", "내과", "정형외과", "외과",
-                "가정의학과","피부과", "안과", "소아과", "요양병원", "비뇨기과", "정신건강의학과", "산부인과", "재활의학과", "정신과",
-                "마취통증의학과"};     // 이 외의 것들은 일단 null로 처리
-        for(String subdivision : subdivisionList) {
-            if(name.contains(subdivision)) {
-                return subdivision;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        return "id : " + this.id + "\naddress : " + this.address + "\ndistrict : " + this.district +
-                "\ncategory : " + this.category + "\nemergency_room : " + this.emergency_room +
-                "\nname : " + this.name + "\nsubdivision : " + this.subdivision + "\n";
     }
 
 /*
