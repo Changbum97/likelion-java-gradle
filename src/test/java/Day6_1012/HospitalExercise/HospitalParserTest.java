@@ -10,16 +10,27 @@ class HospitalParserTest {
     @Test
     @DisplayName("Parsing Test")
     void parseId() {
-        String str = "A1120837,서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동),C,의원,G099,응급의료기관 이외,2,외과: 상시진료 내과는 당분간 휴진,서울시 송파구 문정동 장지동 법조단지 위례 가락동 가락시장역 위치 삼성서울병원 외래교수 출신 구강외과 전문의 진료 진료과목 - 임플란트 치조골 뼈이식 수술 매복 사랑니 발치 턱관절 악관절 질환의 치료 교정 치료 및 기타 보존 보철(크라운 브릿지 인레이) 신경치료,방이역 1번출구 바로옆 굿모닝 신한증권 뒷건물,가산기대찬의원치과,02-6267-258,02-920-5374";
+        String line1 = "A1120837,서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동),C,의원,G099,응급의료기관 이외,2,외과: 상시진료 내과는 당분간 휴진,서울시 송파구 문정동 장지동 법조단지 위례 가락동 가락시장역 위치 삼성서울병원 외래교수 출신 구강외과 전문의 진료 진료과목 - 임플란트 치조골 뼈이식 수술 매복 사랑니 발치 턱관절 악관절 질환의 치료 교정 치료 및 기타 보존 보철(크라운 브릿지 인레이) 신경치료,방이역 1번출구 바로옆 굿모닝 신한증권 뒷건물,가산기대찬의원,02-6267-258,02-920-5374";
+        String line2 = "A1104130,서울특별시 강남구 도산대로 118 (논현동 신사빌딩 2층),C,의원,G099,응급의료기관 이외,2,비만클리닉,365일 진료 국민건강보험공단 검진 지정병원 점심시간 13~14시,신사역 1번 출구 인근,365엠씨의원,02-516-3650,02-920-5374";
+        String line3 = "A1117873,서울특별시 관악구 신원로 38 5층 (신림동 청암빌딩),N,치과의원,G099,응급의료기관 이외,2,대표번호1 지역번호 추가20170118150453,서울시 송파구 문정동 장지동 법조단지 위례 가락동 가락시장역 위치 삼성서울병원 외래교수 출신 구강외과 전문의 진료 진료과목 - 임플란트 치조골 뼈이식 수술 매복 사랑니 발치 턱관절 악관절 질환의 치료 교정 치료 및 기타 보존 보철(크라운 브릿지 인레이) 신경치료,서월치안센터 인근 청암빌딩 5층,가로수치과의원,02-882-2750,02-920-5374";
 
         HospitalParser hp = new HospitalParser();
-        Hospital hospital = hp.parse(str);
-        Assertions.assertEquals("A1120837", hospital.getId());
-        Assertions.assertEquals("서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)", hospital.getAddress());
-        Assertions.assertEquals("서울특별시 금천구", hospital.getDistrict());
-        Assertions.assertEquals('C', hospital.getCategory());
-        Assertions.assertEquals(2, hospital.getEmergency_room());
-        Assertions.assertEquals("가산기대찬의원치과", hospital.getName());
-        Assertions.assertEquals("치과", hospital.getSubdivision());
+        assertHospital(hp.parse(line1), "A1120837", "서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)",
+                "서울특별시 금천구", 'C', 2, "가산기대찬의원", null);
+        assertHospital(hp.parse(line2), "A1104130", "서울특별시 강남구 도산대로 118 (논현동 신사빌딩 2층)",
+                "서울특별시 강남구", 'C',2, "365엠씨의원", null);
+        assertHospital(hp.parse(line3), "A1117873", "서울특별시 관악구 신원로 38 5층 (신림동 청암빌딩)",
+                "서울특별시 관악구", 'N', 2, "가로수치과의원", "치과");
+    }
+
+    private void assertHospital(Hospital hospital, String eId, String eAddress, String eDistrict, char eCategory,
+                                int eEmergency_room, String eName, String eSubdivision) {
+        Assertions.assertEquals(eId, hospital.getId());
+        Assertions.assertEquals(eAddress, hospital.getAddress());
+        Assertions.assertEquals(eDistrict, hospital.getDistrict());
+        Assertions.assertEquals(eCategory, hospital.getCategory());
+        Assertions.assertEquals(eEmergency_room, hospital.getEmergency_room());
+        Assertions.assertEquals(eName, hospital.getName());
+        Assertions.assertEquals(eSubdivision, hospital.getSubdivision());
     }
 }
