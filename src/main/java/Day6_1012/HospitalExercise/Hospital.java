@@ -19,6 +19,10 @@ public class Hospital {
         this.subdivision = this.makeSubdivision(name);
     }
 
+    public String getId() {
+        return this.id;
+    }
+
     private String makeSubdivision(String name) {
         String[] subdivisionList = new String[]
                 {"치과", "성형외과", "한방병원", "한의원", "영상의학과", "이비인후과", "소아청소년과", "내과", "정형외과", "외과",
