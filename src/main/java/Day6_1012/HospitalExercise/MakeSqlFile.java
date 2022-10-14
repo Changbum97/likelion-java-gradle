@@ -29,7 +29,7 @@ public class MakeSqlFile {
         BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
 
         for(Hospital hospital : hospitals) {
-            bw.write(hospital.toSQLQuery() + "\n");
+            bw.write(hospital.getSQLQuery() + "\n");
         }
         bw.flush();
         bw.close();
@@ -42,10 +42,11 @@ public class MakeSqlFile {
         int idx = 0;
         for(Hospital hospital : hospitals) {
             idx ++;
+            // 마지막 라인은 ;로 끝내야 되고 중간 라인은 ,로 끝내야 되서 구분
             if(idx == hospitals.size()) {
-                bw.write(hospital.toTupleString(true));
+                bw.write(hospital.getTupleString(true));
             } else {
-                bw.write(hospital.toTupleString(false));
+                bw.write(hospital.getTupleString(false));
             }
         }
         bw.flush();

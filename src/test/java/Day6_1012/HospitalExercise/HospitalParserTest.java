@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class HospitalParserTest {
     @Test
     @DisplayName("Parsing Test")
@@ -33,6 +31,6 @@ class HospitalParserTest {
         Assertions.assertEquals(eEmergency_room, hospital.getEmergency_room());
         Assertions.assertEquals(eName, hospital.getName());
         Assertions.assertEquals(eSubdivision, hospital.getSubdivision());
-        Assertions.assertEquals(eSqlQuery, hospital.toSQLQuery());
+        Assertions.assertEquals(eSqlQuery, hospital.getSQLQuery());
     }
 }

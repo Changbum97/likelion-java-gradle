@@ -47,8 +47,10 @@ INSERT INTO `likelion-db`.`seoul_hospital` (`id`,`address`,`district`,`category`
 VALUES ('A1120837','서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)','서울특별시 금천구','C',2,'가산기대찬의원',null);
 이런 식의 쿼리를 String 으로 만들어야 함
 */
-    public String toSQLQuery() {
+    public String getSQLQuery() {
+        // 주소에 '가 들어가는 경우가 있어서 ' 제거
         this.address = this.address.replace("'", "");
+
         String query = "INSERT INTO `likelion-db`.`seoul_hospital` (`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`) " +
                 "VALUES ('" + this.id + "','" + this.address + "','" + this.district + "','" + this.category + "'," +
                 this.emergency_room + ",'" + this.name + "',";
@@ -60,8 +62,10 @@ VALUES ('A1120837','서울특별시 금천구 벚꽃로 286 삼성리더스타�
         return query;
     }
 
-    public String toTupleString(boolean lastTuple) {
+    public String getTupleString(boolean lastTuple) {
+        // 주소에 '가 들어가는 경우가 있어서 ' 제거
         this.address = this.address.replace("'", "");
+
         String tuple = "('" + this.id + "','" + this.address + "','" + this.district + "','" + this.category + "'," +
                 this.emergency_room + ",'" + this.name + "',";
         if(this.subdivision != null) {
