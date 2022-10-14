@@ -51,15 +51,22 @@ VALUES ('A1120837','서울특별시 금천구 벚꽃로 286 삼성리더스타�
         // 주소에 '가 들어가는 경우가 있어서 ' 제거
         this.address = this.address.replace("'", "");
 
+        // String.format 사용 예시
+        String queryFormat = String.format("INSERT INTO `likelion-db`.`seoul_hospital` (`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`) " +
+                "VALUES ('%s','%s','%s','%c',%d,'%s',", id, address, district, category, emergency_room, name);
+
+        // String 사용 예시
         String query = "INSERT INTO `likelion-db`.`seoul_hospital` (`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`) " +
                 "VALUES ('" + this.id + "','" + this.address + "','" + this.district + "','" + this.category + "'," +
                 this.emergency_room + ",'" + this.name + "',";
         if(this.subdivision != null) {
             query += "'" + this.subdivision + "');";
+            queryFormat += "'" + this.subdivision + "');";
         } else {
             query += "null);";
+            queryFormat += "null);";
         }
-        return query;
+        return queryFormat;
     }
 
     public String getTupleString(boolean lastTuple) {
