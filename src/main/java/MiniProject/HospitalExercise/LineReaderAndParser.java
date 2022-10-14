@@ -1,4 +1,4 @@
-package Day6_1012.HospitalExercise;
+package Project.HospitalExercise;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

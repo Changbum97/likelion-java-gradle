@@ -1,4 +1,4 @@
-package Day6_1012.HospitalExercise;
+package Project.HospitalExercise;
 
 public class Hospital {
     private String id;
