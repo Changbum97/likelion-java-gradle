@@ -25,6 +25,7 @@ public class MakeSqlFile {
         }
     }
 
+    // Hospital 객체마다 Insert문 따로 작성
     public void write(List<Hospital> hospitals) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
 
@@ -35,6 +36,10 @@ public class MakeSqlFile {
         bw.close();
     }
 
+    // 맨 처음에 Insert문을 맨 처음 한 번만 써주고
+    // ('A1120837','서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)','서울특별시 금천구','C',2,'가산기대찬의원',null),
+    // ('A1104130','서울특별시 강남구 도산대로 118 (논현동 신사빌딩 2층)','서울특별시 강남구','C',2,'365엠씨의원',null),
+    // 이런 식으로 Tuple String 만 뽑아서 write => Insert문 한 번만으로 모든 데이터가 삽입되기 때문에 속도가 매우 빠름
     public void write2(List<Hospital> hospitals) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
 
