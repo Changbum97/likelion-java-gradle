@@ -1,4 +1,4 @@
-package Project.HospitalExercise;
+package MiniProject.HospitalExercise;
 
 import java.io.BufferedWriter;
 import java.io.File;

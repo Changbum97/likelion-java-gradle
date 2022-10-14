@@ -1,4 +1,4 @@
-package Project.HospitalExercise;
+package MiniProject.HospitalExercise;
 
 public interface Parser<T> {
     T parse(String str);

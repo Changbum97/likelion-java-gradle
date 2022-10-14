@@ -1,4 +1,4 @@
-package Project.HospitalExercise;
+package MiniProject.HospitalExercise;
 
 public class HospitalParser implements Parser<Hospital> {
     @Override
