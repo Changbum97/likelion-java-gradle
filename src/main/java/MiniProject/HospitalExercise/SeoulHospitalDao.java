@@ -24,7 +24,6 @@ public class SeoulHospitalDao {
     }
 
     public void add(Hospital hospital) throws SQLException {
-
         PreparedStatement ps = conn.prepareStatement(
                 "INSERT INTO seoul_hospital(id, address, district, category, emergency_room, name, subdivision) " +
                         "values (?, ?, ?, ?, ?, ?, ?);"
