@@ -31,6 +31,7 @@ public class UserDao {
         ps.setString(2, "Changbum");
         ps.setString(3, "1234");
 
+        // id가 PK이기 때문에 중복되면 에러 발생 => try, catch로 잡아줌
         try {
             // MySQL에 입력한 쿼리 실행
             int status = ps.executeUpdate();
@@ -54,6 +55,7 @@ public class UserDao {
         ResultSet resultSet = ps.executeQuery();
         System.out.println("DB Search 완료");
 
+        // 여러개 search도 가능
         while(resultSet.next()) {
             System.out.printf("id : %s, name : %s, password : %s\n",
                     resultSet.getString("id"),
@@ -67,7 +69,7 @@ public class UserDao {
         UserDao userDao = new UserDao();
         userDao.add();
         userDao.search();
-        userDao.conn.close();
         userDao.ps.close();
+        userDao.conn.close();
     }
 }
