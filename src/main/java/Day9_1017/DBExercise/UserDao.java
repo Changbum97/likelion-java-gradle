@@ -1,6 +1,8 @@
 package Day9_1017.DBExercise;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class UserDao {
@@ -26,7 +28,7 @@ public class UserDao {
         );
 
         // 쿼리에 파라미터 입력
-        ps.setString(1, "0");
+        ps.setString(1, "2");
         ps.setString(2, "Changbum");
         ps.setString(3, "1234");
 
@@ -42,33 +44,39 @@ public class UserDao {
         ps.close();
     }
 
-    public void search() throws SQLException {
+    public List<User> search() throws SQLException {
         // 쿼리 입력
         ps = conn.prepareStatement(
-                "SELECT * FROM users WHERE id = ?;"
+                "SELECT * FROM users WHERE name = ?;"
         );
 
         // 쿼리에 파라미터 입력
-        ps.setString(1, "0");
+        ps.setString(1, "Changbum");
 
         // MySQL에 입력한 쿼리 실행
         ResultSet resultSet = ps.executeQuery();
         System.out.println("DB Search 완료");
 
+        List<User> users = new ArrayList<>();
         // 여러개 search도 가능
         while(resultSet.next()) {
-            System.out.printf("id : %s, name : %s, password : %s\n",
-                    resultSet.getString("id"),
-                    resultSet.getString("name"),
-                    resultSet.getString("password"));
+            users.add(new User(resultSet.getString("id"), resultSet.getString("name"),
+                    resultSet.getString("password")));
         }
+        resultSet.close();
         ps.close();
+
+        return users;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
         userDao.add();
-        userDao.search();
+
+        List<User> searchUsers = userDao.search();
+        for(User user : searchUsers) {
+            System.out.println(user);
+        }
         userDao.conn.close();
     }
 }
