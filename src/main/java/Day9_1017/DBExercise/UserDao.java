@@ -9,6 +9,7 @@ public class UserDao {
     private Map<String, String> env;
     private String dbHost, dbUser, dbPassword;
     private Connection conn;
+    private PreparedStatement ps;
 
     public UserDao() throws SQLException {
         env = System.getenv();
@@ -21,12 +22,12 @@ public class UserDao {
 
     public void add() throws ClassNotFoundException, SQLException {
         // 쿼리 입력
-        PreparedStatement ps = conn.prepareStatement(
+        ps = conn.prepareStatement(
                 "INSERT INTO users(id, name, password) values (?, ?, ?);"
         );
 
         // 쿼리에 파라미터 입력
-        ps.setString(1, "2");
+        ps.setString(1, "0");
         ps.setString(2, "Changbum");
         ps.setString(3, "1234");
 
@@ -38,18 +39,16 @@ public class UserDao {
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("id 중복");
         }
-
-        ps.close();
     }
 
     public void search() throws SQLException {
         // 쿼리 입력
-        PreparedStatement ps = conn.prepareStatement(
+        ps = conn.prepareStatement(
                 "SELECT * FROM users WHERE id = ?;"
         );
 
         // 쿼리에 파라미터 입력
-        ps.setInt(1, 0);
+        ps.setString(1, "0");
 
         // MySQL에 입력한 쿼리 실행
         ResultSet resultSet = ps.executeQuery();
@@ -61,8 +60,6 @@ public class UserDao {
                     resultSet.getString("name"),
                     resultSet.getString("password"));
         }
-
-        ps.close();
     }
 
     // UserDao의 add 메소드 실행
@@ -71,5 +68,6 @@ public class UserDao {
         userDao.add();
         userDao.search();
         userDao.conn.close();
+        userDao.ps.close();
     }
 }
