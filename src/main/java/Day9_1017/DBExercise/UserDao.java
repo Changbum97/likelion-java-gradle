@@ -39,6 +39,7 @@ public class UserDao {
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("id 중복");
         }
+        ps.close();
     }
 
     public void search() throws SQLException {
@@ -61,13 +62,13 @@ public class UserDao {
                     resultSet.getString("name"),
                     resultSet.getString("password"));
         }
+        ps.close();
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
         userDao.add();
         userDao.search();
-        userDao.ps.close();
         userDao.conn.close();
     }
 }
