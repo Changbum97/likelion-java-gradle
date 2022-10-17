@@ -25,7 +25,7 @@ public class StarExercise {
                 System.out.print(" ");
             }
             for(int j = 1 ; j < 2 * i ; j ++) {
-                System.out.print("*");
+                System.out.print(letter);
             }
             System.out.println();
         }
