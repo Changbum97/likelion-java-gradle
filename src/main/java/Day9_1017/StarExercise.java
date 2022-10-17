@@ -1,10 +1,16 @@
 package Day9_1017;
 
-public class RightTriangle {
+public class StarExercise {
 
     public static void main(String[] args) {
-        RightTriangle rt = new RightTriangle();
+        StarExercise rt = new StarExercise('@');
         rt.printRightTriangle(4);
+    }
+
+    private char letter;
+
+    public StarExercise(char letter) {
+        this.letter = letter;
     }
 
     /*
@@ -16,7 +22,7 @@ public class RightTriangle {
     public void printRightTriangle(int n) {
         for(int i = 1 ; i <= n ; i ++) {
             for(int j = 1 ; j <= i ; j ++) {
-                System.out.print("* ");
+                System.out.print(letter + " ");
             }
             System.out.println();
         }
