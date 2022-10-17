@@ -20,12 +20,11 @@ public class SeoulHospitalDao {
         dbHost = env.get("DB_HOST");
         dbUser = env.get("DB_USER");
         dbPassword = env.get("DB_PASSWORD");
-        // DB 연결 (url, ID, PW)
         conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);
     }
 
     public void add(Hospital hospital) throws SQLException {
-        // 쿼리 입력
+
         PreparedStatement ps = conn.prepareStatement(
                 "INSERT INTO seoul_hospital(id, address, district, category, emergency_room, name, subdivision) " +
                         "values (?, ?, ?, ?, ?, ?, ?);"
