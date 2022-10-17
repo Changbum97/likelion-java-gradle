@@ -1,6 +1,5 @@
 package Day9_1017.DBExercise;
 
-import javax.xml.namespace.QName;
 import java.sql.*;
 import java.util.Map;
 
