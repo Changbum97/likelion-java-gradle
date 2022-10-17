@@ -12,7 +12,6 @@ public class p1090 {
         for(int i = 1 ; i < c ; i ++) {
             a *= b;
         }
-
         System.out.println(a);
     }
 }
