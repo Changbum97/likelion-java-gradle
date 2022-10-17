@@ -14,9 +14,9 @@ public class StarExercise {
     }
 
     /*
-     *
-     ***
-     *****
+        *
+       ***
+      *****
      *******
      */
     public void printPyramid(int n) {
