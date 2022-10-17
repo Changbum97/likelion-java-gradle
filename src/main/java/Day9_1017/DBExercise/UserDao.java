@@ -64,7 +64,6 @@ public class UserDao {
         }
     }
 
-    // UserDao의 add 메소드 실행
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
         userDao.add();
