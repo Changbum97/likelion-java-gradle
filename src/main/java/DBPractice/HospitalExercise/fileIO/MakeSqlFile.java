@@ -1,6 +1,6 @@
-package MiniProject.HospitalExercise.fileIO;
+package DBExercise.HospitalExercise.fileIO;
 
-import MiniProject.HospitalExercise.domain.Hospital;
+import DBExercise.HospitalExercise.domain.Hospital;
 
 import java.io.BufferedWriter;
 import java.io.File;

@@ -1,7 +1,7 @@
-package MiniProject.HospitalExercise;
+package DBExercise.HospitalExercise;
 
-import MiniProject.HospitalExercise.domain.Hospital;
-import MiniProject.HospitalExercise.parser.HospitalParser;
+import DBExercise.HospitalExercise.domain.Hospital;
+import DBExercise.HospitalExercise.parser.HospitalParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
