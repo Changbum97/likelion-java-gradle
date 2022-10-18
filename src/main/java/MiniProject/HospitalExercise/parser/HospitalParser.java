@@ -10,7 +10,7 @@ public class HospitalParser implements Parser<Hospital> {
         String id = splitted[0];
         String address = splitted[1];
         String district = address.split(" ")[0] + " " + address.split(" ")[1];
-        char category = splitted[2].charAt(0);
+        String category = splitted[2];
         int emergency_room = Integer.parseInt(splitted[6]);
         String name = splitted[10];
         String subdivision = makeSubdivision(name);

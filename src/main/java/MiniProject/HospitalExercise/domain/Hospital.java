@@ -4,12 +4,12 @@ public class Hospital {
     private String id;
     private String address;
     private String district;
-    private char category;
+    private String category;
     private int emergency_room;
     private String name;
     private String subdivision;
 
-    public Hospital(String id, String address, String district, char category,
+    public Hospital(String id, String address, String district, String category,
                     int emergency_room, String name, String subdivision) {
         this.id = id;
         this.address = address;
@@ -29,7 +29,7 @@ public class Hospital {
     public String getDistrict() {
         return district;
     }
-    public char getCategory() {
+    public String getCategory() {
         return category;
     }
     public int getEmergency_room() {
