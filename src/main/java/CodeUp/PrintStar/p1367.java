@@ -1,4 +1,4 @@
-package CodeUp;
+package CodeUp.PrintStar;
 
 import java.util.Scanner;
 
@@ -16,5 +16,6 @@ public class p1367 {
             }
             System.out.println();
         }
+
     }
 }
