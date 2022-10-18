@@ -54,7 +54,7 @@
 ## Day 9 (10/17 월)
 - 알고리즘
   - 별찍기 (직각삼각형, 피라미드, 마름모 모양)
-- JAVA와 DB 연동 (DBPractice/UserExercise)
+- JAVA와 DB 연동 (UserExercise)
   - MySQL 라이브러리 다운, 적용
   - DriverManager, 환경변수 사용해 MySQL과 연결
   - Insert, Select문 사용 예제
@@ -62,10 +62,10 @@
 ## Day 10 (10/18 화)
 - 알고리즘
   - 별찍기 (직사각형, 정사각형, 재귀활용)
-- JAVA와 DB 연동 테스트코드 작성 (DBPractice/UserExercise)
+- JAVA와 DB 연동 테스트코드 작성 (UserExercise)
   - Insert한 값과 findById로 select한 값이 일치하는지 테스트
 
-## 미니프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (DBPractice/HospitalExercise)
+## 미니프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
   - 서울특별시 병의원 위치 정보.csv 파일 다운
   - csv파일 읽어와서 Parsing 작업을 통해 데이터 추출
