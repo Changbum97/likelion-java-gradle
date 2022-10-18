@@ -1,11 +1,12 @@
-package DBPractice.UserExercise.dao;
+package DBPractice.UserExercise.dao.separateClass;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Map;
 
-public class ConnectionMaker {
+public class ConnectionMakerClass {
 
+    // 공통 기능인 makeConnection 메소드만 따로 Class로 빼냄
     public Connection makeConnection() {
         try {
             // 등록한 환경변수 사용
