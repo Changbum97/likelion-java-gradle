@@ -63,9 +63,11 @@
 - 알고리즘
   - 별찍기 (직사각형, 정사각형, 재귀활용)
 - JAVA와 DB 연동 테스트코드 작성 (UserExercise)
-  - Insert한 값과 findById로 select한 값이 일치하는지 테스트
-  - Insert, Select 등에서 Connection 부분이 같으므로 makeConnection class 분리
-  - User Dao Abstract Class 적용 => 달라지는 부분만 abstract method
+  - Insert한 값과 findById로 Select한 값이 일치하는지 테스트
+  - Insert, Select 등에서 Connection 부분이 같으므로 리팩토링 필요
+    1. Abstract Class 사용 : 다중 상속 불가
+    2. Class 분리 : Method가 고정
+    3. Interface 사용 => UserDao에서 interface 구현체 사용
 
 ## 미니프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
@@ -80,12 +82,12 @@
   - Test Code 작성
     - 임의의 데이터를 사용해 Test Code 작성 후 테스트 진행
 - 10/17 월
-  - sql 파일 따로 생성 안하고 JAVA와의 연동을 통해 바로 Insert 쿼리 날려 데이터 추가
+  - sql 파일 따로 생성 안하고 JAVA와 DB 연동 후 INSERT 쿼리 직접 데이터 추가
 - 10/18 화
-  - JAVA 연동을 통한 Search
+  - JAVA 연동을 통한 SELECT
 
 ## CodeUp (해결한 문제)
-- c언어 기초 100제 : p1000 ~ p1090
+- c언어 기초 100제 : p1000 ~ p1099
 - 나머지 연산 활용 : p1155, p1156, p1161
 - 자릿수 관련 : p1278, p1620
 - 최대값 : p2081, p4596
