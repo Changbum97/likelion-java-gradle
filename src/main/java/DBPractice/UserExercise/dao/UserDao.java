@@ -1,5 +1,7 @@
 package DBPractice.UserExercise.dao;
 
+import DBPractice.UserExercise.dao.useAbstractClass.LocalUserDaoAbstractImpl;
+import DBPractice.UserExercise.dao.useInterface.LocalConnectionMaker;
 import DBPractice.UserExercise.domain.User;
 
 import java.sql.*;
@@ -8,14 +10,15 @@ import java.util.List;
 
 public class UserDao {
 
-    private LocalConnectionMakerImpl connectionMaker;
+    // Interface 구현체 사용
+    private LocalConnectionMaker connectionMaker;
 
     public UserDao() {
-        connectionMaker = new LocalConnectionMakerImpl();
+        connectionMaker = new LocalConnectionMaker();
     }
 
-    // 기본은 local이지만 다른 ConnectionMakerImpl을 주입하는것도 가능
-    public UserDao(LocalConnectionMakerImpl connectionMaker) {
+    // 기본은 local이지만 다른 ConnectionMaker을 주입하는것도 가능
+    public UserDao(LocalConnectionMaker connectionMaker) {
         this.connectionMaker = connectionMaker;
     }
 
