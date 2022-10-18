@@ -10,7 +10,8 @@ import java.sql.SQLException;
 class UserDaoTest {
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
+        //UserDao userDao = new UserDao();
+        LocalUserDaoImpl userDao = new LocalUserDaoImpl();
         User user = new User("9", "EternityHwan", "1234");
         userDao.add(user);
 
