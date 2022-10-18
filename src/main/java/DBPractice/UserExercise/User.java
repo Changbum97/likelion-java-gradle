@@ -1,4 +1,4 @@
-package Week3.Day9_1017.DBExercise;
+package DBPractice.UserExercise;
 
 public class User {
     private String id;

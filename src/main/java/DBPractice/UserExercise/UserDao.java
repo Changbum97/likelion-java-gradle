@@ -1,4 +1,4 @@
-package Week3.Day9_1017.DBExercise;
+package DBPractice.UserExercise;
 
 import java.sql.*;
 import java.util.ArrayList;
