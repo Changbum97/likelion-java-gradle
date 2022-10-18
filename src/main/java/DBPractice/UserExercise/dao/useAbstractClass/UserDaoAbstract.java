@@ -1,4 +1,4 @@
-package DBPractice.UserExercise.dao;
+package DBPractice.UserExercise.dao.useAbstractClass;
 
 import DBPractice.UserExercise.domain.User;
 
@@ -9,8 +9,9 @@ import java.util.Map;
 
 public abstract class UserDaoAbstract {
 
+    // makeConnection만 추상 메소드로 지정
+    // 나머지 메소드들은 일반 메소드로 바로 사용 가능
     public abstract Connection makeConnection();
-
 
     public void add(User user) throws ClassNotFoundException, SQLException {
         Connection conn = makeConnection();
@@ -35,31 +36,6 @@ public abstract class UserDaoAbstract {
 
         ps.close();
         conn.close();
-    }
-
-    public List<User> findAll() throws SQLException {
-        Connection conn = makeConnection();
-
-        // 쿼리 입력
-        PreparedStatement ps = conn.prepareStatement( "SELECT * FROM users;" );
-
-        // MySQL에 입력한 쿼리 실행
-        ResultSet resultSet = ps.executeQuery();
-        System.out.println("DB FindAll 완료");
-
-        List<User> users = new ArrayList<>();
-
-        // search 결과값 읽어서 users에 넣어주는 작업
-        while(resultSet.next()) {
-            users.add(new User(resultSet.getString("id"), resultSet.getString("name"),
-                    resultSet.getString("password")));
-        }
-
-        resultSet.close();
-        ps.close();
-        conn.close();
-
-        return users;
     }
 
     public User findById(String id) throws SQLException {
@@ -90,13 +66,4 @@ public abstract class UserDaoAbstract {
         return user;
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        /*UserDaoAbstract userDao = new UserDaoAbstract();
-        userDao.add(new User("4", "Ruru", "12345678"));
-
-        List<User> searchUsers = userDao.findAll();
-        for(User user : searchUsers) {
-            System.out.println(user);
-        }*/
-    }
 }

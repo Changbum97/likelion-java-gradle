@@ -1,14 +1,13 @@
-package DBPractice.UserExercise.dao;
+package DBPractice.UserExercise.dao.useAbstractClass;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Map;
 
-public class AWSUserDaoImpl extends UserDaoAbstract {
+public class AWSUserDaoAbstractImpl extends UserDaoAbstract {
     @Override
     public Connection makeConnection() {
         try {
-            // 환경변수는 로컬로 등록해놨음, 예시용
+            // AWS는 환경변수 등록 안해서 예시로만 작성
             String dbHost = "jdbc:mysql://[AWS주소]/[테이블명]";
             String dbUser = "[AWS mysql user name]";
             String dbPassword = "[AWS mysql user password]";

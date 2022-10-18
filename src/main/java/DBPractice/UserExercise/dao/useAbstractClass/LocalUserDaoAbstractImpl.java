@@ -1,10 +1,10 @@
-package DBPractice.UserExercise.dao;
+package DBPractice.UserExercise.dao.useAbstractClass;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Map;
 
-public class LocalUserDaoImpl extends UserDaoAbstract {
+public class LocalUserDaoAbstractImpl extends UserDaoAbstract {
     @Override
     public Connection makeConnection() {
         try {
