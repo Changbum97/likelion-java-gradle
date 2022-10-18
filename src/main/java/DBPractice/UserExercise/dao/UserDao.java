@@ -9,23 +9,14 @@ import java.util.Map;
 
 public class UserDao {
 
-    private Connection makeConnection() {
-        try {
-            Map<String, String> env = System.getenv();
-            String dbHost = env.get("DB_HOST");
-            String dbUser = env.get("DB_USER");
-            String dbPassword = env.get("DB_PASSWORD");
-            // DB 연결 (url, ID, PW)
-            Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);
-            return conn;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+    private SimpleConnectionMaker simpleConnectionMaker;
+
+    public UserDao() {
+        simpleConnectionMaker = new SimpleConnectionMaker();
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
-        Connection conn = makeConnection();
+        Connection conn = simpleConnectionMaker.makeConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement( "INSERT INTO users(id, name, password) values (?, ?, ?);" );
@@ -50,7 +41,7 @@ public class UserDao {
     }
 
     public List<User> findAll() throws SQLException {
-        Connection conn = makeConnection();
+        Connection conn = simpleConnectionMaker.makeConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement( "SELECT * FROM users;" );
@@ -75,7 +66,7 @@ public class UserDao {
     }
 
     public User findById(String id) throws SQLException {
-        Connection conn = makeConnection();
+        Connection conn = simpleConnectionMaker.makeConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE id = ?;");
