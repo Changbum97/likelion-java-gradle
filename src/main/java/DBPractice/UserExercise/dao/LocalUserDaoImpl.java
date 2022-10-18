@@ -8,6 +8,7 @@ public class LocalUserDaoImpl extends UserDaoAbstract {
     @Override
     public Connection makeConnection() {
         try {
+            // 등록한 환경변수 사용
             Map<String, String> env = System.getenv();
             String dbHost = env.get("DB_HOST");
             String dbUser = env.get("DB_USER");

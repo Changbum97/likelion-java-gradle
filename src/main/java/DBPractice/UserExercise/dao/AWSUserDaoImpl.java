@@ -8,7 +8,7 @@ public class AWSUserDaoImpl extends UserDaoAbstract {
     @Override
     public Connection makeConnection() {
         try {
-            Map<String, String> env = System.getenv();
+            // 환경변수는 로컬로 등록해놨음, 예시용
             String dbHost = "jdbc:mysql://[AWS주소]/[테이블명]";
             String dbUser = "[AWS mysql user name]";
             String dbPassword = "[AWS mysql user password]";
