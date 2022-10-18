@@ -8,14 +8,14 @@ import java.util.List;
 
 public class UserDao {
 
-    private ConnectionMaker simpleConnectionMaker;
+    private ConnectionMakerImpl connectionMaker;
 
     public UserDao() {
-        simpleConnectionMaker = new ConnectionMaker();
+        connectionMaker = new ConnectionMakerImpl();
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
-        Connection conn = simpleConnectionMaker.makeConnection();
+        Connection conn = connectionMaker.makeConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement( "INSERT INTO users(id, name, password) values (?, ?, ?);" );
@@ -40,7 +40,7 @@ public class UserDao {
     }
 
     public List<User> findAll() throws SQLException {
-        Connection conn = simpleConnectionMaker.makeConnection();
+        Connection conn = connectionMaker.makeConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement( "SELECT * FROM users;" );
@@ -65,7 +65,7 @@ public class UserDao {
     }
 
     public User findById(String id) throws SQLException {
-        Connection conn = simpleConnectionMaker.makeConnection();
+        Connection conn = connectionMaker.makeConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE id = ?;");
