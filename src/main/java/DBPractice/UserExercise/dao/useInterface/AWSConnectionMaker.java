@@ -1,20 +1,16 @@
 package DBPractice.UserExercise.dao.useInterface;
 
-import DBPractice.UserExercise.dao.useInterface.ConnectionMakerInterface;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Map;
 
-public class LocalConnectionMakerImpl implements ConnectionMakerInterface {
+public class AWSConnectionMaker implements ConnectionMakerInterface {
     @Override
     public Connection makeConnection() {
         try {
-            // 등록한 환경변수 사용
-            Map<String, String> env = System.getenv();
-            String dbHost = env.get("DB_HOST");
-            String dbUser = env.get("DB_USER");
-            String dbPassword = env.get("DB_PASSWORD");
+            // AWS는 환경변수 등록 안해서 예시로만 작성
+            String dbHost = "jdbc:mysql://[AWS주소]/[테이블명]";
+            String dbUser = "[AWS mysql user name]";
+            String dbPassword = "[AWS mysql user password]";
             // DB 연결 (url, ID, PW)
             Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);
             return conn;

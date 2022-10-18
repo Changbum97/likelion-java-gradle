@@ -1,12 +1,10 @@
 package DBPractice.UserExercise.dao.useInterface;
 
-import DBPractice.UserExercise.dao.useInterface.ConnectionMakerInterface;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Map;
 
-public class LocalConnectionMakerImpl implements ConnectionMakerInterface {
+public class LocalConnectionMaker implements ConnectionMakerInterface {
     @Override
     public Connection makeConnection() {
         try {
