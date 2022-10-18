@@ -21,5 +21,4 @@ public class LocalConnectionMakerImpl implements ConnectionMakerInterface {
             return null;
         }
     }
-
 }
