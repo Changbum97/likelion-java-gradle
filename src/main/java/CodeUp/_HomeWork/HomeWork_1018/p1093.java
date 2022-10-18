@@ -2,19 +2,17 @@ package CodeUp._HomeWork.HomeWork_1018;
 
 import java.util.Scanner;
 
-public class p1091 {
+public class p1093 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        long a = sc.nextLong();
-        int b = sc.nextInt();
-        int c = sc.nextInt();
-        int d = sc.nextInt();
-
-        for(int i = 1 ; i < d ; i ++) {
-            a = (a * b) + c;
+        int[] arr = new int[24];
+        int n = sc.nextInt();
+        for(int i = 0 ; i < n ; i ++) {
+            arr[sc.nextInt()] ++;
         }
 
-        System.out.println(a);
-
+        for(int i = 1 ; i <= 23 ; i ++) {
+            System.out.print(arr[i] + " ");
+        }
     }
 }

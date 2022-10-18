@@ -2,19 +2,33 @@ package CodeUp._HomeWork.HomeWork_1018;
 
 import java.util.Scanner;
 
-public class p1091 {
+public class p1092 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        long a = sc.nextLong();
+        int a = sc.nextInt();
         int b = sc.nextInt();
         int c = sc.nextInt();
-        int d = sc.nextInt();
 
-        for(int i = 1 ; i < d ; i ++) {
-            a = (a * b) + c;
+        System.out.println(LCM(a, LCM(b, c)));
+    }
+
+    static int LCM(int x, int y) {
+        int xx, yy;
+        if(x > y) {
+            xx = x;
+            yy = y;
+        } else {
+            xx = y;
+            yy = x;
         }
 
-        System.out.println(a);
-
+        while(true) {
+            int z = xx % yy;
+            if(z == 0) {
+                return x * y / yy;
+            }
+            xx = yy;
+            yy = z;
+        }
     }
 }
