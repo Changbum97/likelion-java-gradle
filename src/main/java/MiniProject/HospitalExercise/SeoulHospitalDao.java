@@ -36,7 +36,7 @@ public class SeoulHospitalDao {
         ps.setString(1, hospital.getId());
         ps.setString(2, hospital.getAddress());
         ps.setString(3, hospital.getDistrict());
-        ps.setString(4, hospital.getCategory() + "");
+        ps.setString(4, hospital.getCategory());
         ps.setInt(5, hospital.getEmergency_room());
         ps.setString(6, hospital.getName());
         ps.setString(7, hospital.getSubdivision());
