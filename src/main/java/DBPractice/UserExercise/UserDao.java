@@ -21,16 +21,16 @@ public class UserDao {
         conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);
     }
 
-    public void add() throws ClassNotFoundException, SQLException {
+    public void add(User user) throws ClassNotFoundException, SQLException {
         // 쿼리 입력
         ps = conn.prepareStatement(
                 "INSERT INTO users(id, name, password) values (?, ?, ?);"
         );
 
         // 쿼리 파라미터 설정
-        ps.setString(1, "2");
-        ps.setString(2, "Changbum");
-        ps.setString(3, "1234");
+        ps.setString(1, user.getId());
+        ps.setString(2, user.getName());
+        ps.setString(3, user.getPassword());
 
         // id가 PK이기 때문에 중복되면 에러 발생 => try, catch로 잡아줌
         try {
@@ -70,9 +70,28 @@ public class UserDao {
         return users;
     }
 
+    public User findById(String id) throws SQLException {
+        // 쿼리 입력
+        ps = conn.prepareStatement("SELECT * FROM users WHERE id = ?;");
+
+        // 쿼리 파라미터 설정
+        ps.setString(1, id);
+
+        // MySQL에 입력한 쿼리 실행
+        ResultSet resultSet = ps.executeQuery();
+        if(resultSet.next()) {
+            System.out.println("DB Search 완료");
+            return new User(resultSet.getString("id"), resultSet.getString("name"),
+                    resultSet.getString("password"));
+        } else {
+            System.out.println("Search 결과 없음");
+            return null;
+        }
+    }
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
-        userDao.add();
+        userDao.add(new User("3", "Ruru", "12345678"));
 
         List<User> searchUsers = userDao.search();
         for(User user : searchUsers) {
