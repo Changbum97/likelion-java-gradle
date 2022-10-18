@@ -1,4 +1,4 @@
-package MiniProject.HospitalExercise;
+package MiniProject.HospitalExercise.domain;
 
 public class Hospital {
     private String id;

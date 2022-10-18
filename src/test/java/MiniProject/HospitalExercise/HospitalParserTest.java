@@ -1,10 +1,10 @@
 package MiniProject.HospitalExercise;
 
+import MiniProject.HospitalExercise.domain.Hospital;
+import MiniProject.HospitalExercise.parser.HospitalParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class HospitalParserTest {
     @Test

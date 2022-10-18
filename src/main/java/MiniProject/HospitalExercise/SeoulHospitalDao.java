@@ -1,5 +1,9 @@
 package MiniProject.HospitalExercise;
 
+import MiniProject.HospitalExercise.domain.Hospital;
+import MiniProject.HospitalExercise.fileIO.LineReaderAndParser;
+import MiniProject.HospitalExercise.parser.HospitalParser;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;

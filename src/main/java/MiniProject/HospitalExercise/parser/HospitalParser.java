@@ -1,4 +1,6 @@
-package MiniProject.HospitalExercise;
+package MiniProject.HospitalExercise.parser;
+
+import MiniProject.HospitalExercise.domain.Hospital;
 
 public class HospitalParser implements Parser<Hospital> {
     @Override

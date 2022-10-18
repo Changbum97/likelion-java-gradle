@@ -1,4 +1,6 @@
-package MiniProject.HospitalExercise;
+package MiniProject.HospitalExercise.fileIO;
+
+import MiniProject.HospitalExercise.parser.Parser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
