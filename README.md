@@ -62,6 +62,8 @@
 ## Day 10 (10/18 화)
 - 알고리즘
   - 별찍기 (직사각형, 정사각형, 재귀활용)
+- JAVA와 DB 연동 테스트코드 작성 (DBPractice/UserExercise)
+  - Insert한 값과 findById로 select한 값이 일치하는지 테스트
 
 ## 미니프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (DBPractice/HospitalExercise)
 - 10/12 수
