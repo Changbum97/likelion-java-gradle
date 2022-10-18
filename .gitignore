@@ -3,6 +3,7 @@
 out/
 OriginalData/
 settings.gradle
+build
 
 gradle
 .gradle
