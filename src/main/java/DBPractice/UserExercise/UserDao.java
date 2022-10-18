@@ -27,7 +27,7 @@ public class UserDao {
                 "INSERT INTO users(id, name, password) values (?, ?, ?);"
         );
 
-        // 쿼리에 파라미터 입력
+        // 쿼리 파라미터 설정
         ps.setString(1, "2");
         ps.setString(2, "Changbum");
         ps.setString(3, "1234");
@@ -50,7 +50,7 @@ public class UserDao {
                 "SELECT * FROM users WHERE name = ?;"
         );
 
-        // 쿼리에 파라미터 입력
+        // 쿼리 파라미터 설정
         ps.setString(1, "Changbum");
 
         // MySQL에 입력한 쿼리 실행
@@ -58,7 +58,8 @@ public class UserDao {
         System.out.println("DB Search 완료");
 
         List<User> users = new ArrayList<>();
-        // 여러개 search도 가능
+
+        // search 결과값 읽어서 users에 넣어주는 작업
         while(resultSet.next()) {
             users.add(new User(resultSet.getString("id"), resultSet.getString("name"),
                     resultSet.getString("password")));
