@@ -5,14 +5,13 @@ import DBPractice.UserExercise.domain.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class UserDao {
 
-    private SimpleConnectionMaker simpleConnectionMaker;
+    private ConnectionMaker simpleConnectionMaker;
 
     public UserDao() {
-        simpleConnectionMaker = new SimpleConnectionMaker();
+        simpleConnectionMaker = new ConnectionMaker();
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
