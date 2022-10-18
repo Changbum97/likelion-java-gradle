@@ -64,6 +64,8 @@
   - 별찍기 (직사각형, 정사각형, 재귀활용)
 - JAVA와 DB 연동 테스트코드 작성 (UserExercise)
   - Insert한 값과 findById로 select한 값이 일치하는지 테스트
+  - Insert, Select 등에서 Connection 부분이 같으므로 makeConnection class 분리
+  - User Dao Abstract Class 적용 => 달라지는 부분만 abstract method
 
 ## 미니프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
