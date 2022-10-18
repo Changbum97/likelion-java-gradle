@@ -54,10 +54,10 @@ public class SeoulHospitalDao {
                 "SELECT * FROM seoul_hospital WHERE district = ?;"
         );
 
-        // 쿼리에 파라미터 입력
+        // 쿼리 파라미터 설정
         ps.setString(1, "서울특별시 강남구");
 
-        // MySQL에 입력한 쿼리 실행
+        // 쿼리 실행
         ResultSet resultSet = ps.executeQuery();
         System.out.println("DB Search 완료");
 
