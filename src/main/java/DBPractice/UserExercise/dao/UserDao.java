@@ -8,10 +8,15 @@ import java.util.List;
 
 public class UserDao {
 
-    private ConnectionMakerImpl connectionMaker;
+    private LocalConnectionMakerImpl connectionMaker;
 
     public UserDao() {
-        connectionMaker = new ConnectionMakerImpl();
+        connectionMaker = new LocalConnectionMakerImpl();
+    }
+
+    // 기본은 local이지만 다른 ConnectionMakerImpl을 주입하는것도 가능
+    public UserDao(LocalConnectionMakerImpl connectionMaker) {
+        this.connectionMaker = connectionMaker;
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {

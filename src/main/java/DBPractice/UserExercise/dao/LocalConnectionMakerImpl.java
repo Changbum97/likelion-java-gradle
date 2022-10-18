@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Map;
 
-public class ConnectionMakerImpl implements ConnectionMakerInterface {
+public class LocalConnectionMakerImpl implements ConnectionMakerInterface {
     @Override
     public Connection makeConnection() {
         try {
@@ -21,4 +21,5 @@ public class ConnectionMakerImpl implements ConnectionMakerInterface {
             return null;
         }
     }
+
 }
