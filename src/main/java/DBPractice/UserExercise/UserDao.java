@@ -7,25 +7,26 @@ import java.util.Map;
 
 public class UserDao {
 
-    private Map<String, String> env;
-    private String dbHost, dbUser, dbPassword;
-    private Connection conn;
-    private PreparedStatement ps;
-
-    public UserDao() throws SQLException {
-        env = System.getenv();
-        dbHost = env.get("DB_HOST");
-        dbUser = env.get("DB_USER");
-        dbPassword = env.get("DB_PASSWORD");
-        // DB 연결 (url, ID, PW)
-        conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);
+    private Connection makeConnection() {
+        try {
+            Map<String, String> env = System.getenv();
+            String dbHost = env.get("DB_HOST");
+            String dbUser = env.get("DB_USER");
+            String dbPassword = env.get("DB_PASSWORD");
+            // DB 연결 (url, ID, PW)
+            Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);
+            return conn;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
+        Connection conn = makeConnection();
+
         // 쿼리 입력
-        ps = conn.prepareStatement(
-                "INSERT INTO users(id, name, password) values (?, ?, ?);"
-        );
+        PreparedStatement ps = conn.prepareStatement( "INSERT INTO users(id, name, password) values (?, ?, ?);" );
 
         // 쿼리 파라미터 설정
         ps.setString(1, user.getId());
@@ -41,21 +42,20 @@ public class UserDao {
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("id 중복");
         }
+
         ps.close();
+        conn.close();
     }
 
-    public List<User> search() throws SQLException {
-        // 쿼리 입력
-        ps = conn.prepareStatement(
-                "SELECT * FROM users WHERE name = ?;"
-        );
+    public List<User> findAll() throws SQLException {
+        Connection conn = makeConnection();
 
-        // 쿼리 파라미터 설정
-        ps.setString(1, "Changbum");
+        // 쿼리 입력
+        PreparedStatement ps = conn.prepareStatement( "SELECT * FROM users;" );
 
         // MySQL에 입력한 쿼리 실행
         ResultSet resultSet = ps.executeQuery();
-        System.out.println("DB Search 완료");
+        System.out.println("DB FindAll 완료");
 
         List<User> users = new ArrayList<>();
 
@@ -64,39 +64,49 @@ public class UserDao {
             users.add(new User(resultSet.getString("id"), resultSet.getString("name"),
                     resultSet.getString("password")));
         }
+
         resultSet.close();
         ps.close();
+        conn.close();
 
         return users;
     }
 
     public User findById(String id) throws SQLException {
+        Connection conn = makeConnection();
+
         // 쿼리 입력
-        ps = conn.prepareStatement("SELECT * FROM users WHERE id = ?;");
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE id = ?;");
 
         // 쿼리 파라미터 설정
         ps.setString(1, id);
 
         // MySQL에 입력한 쿼리 실행
         ResultSet resultSet = ps.executeQuery();
+        User user = null;
+
         if(resultSet.next()) {
-            System.out.println("DB Search 완료");
-            return new User(resultSet.getString("id"), resultSet.getString("name"),
+            System.out.println("DB FindById 완료");
+            user = new User(resultSet.getString("id"), resultSet.getString("name"),
                     resultSet.getString("password"));
         } else {
-            System.out.println("Search 결과 없음");
-            return null;
+            System.out.println("FindById 결과 없음");
         }
+
+        resultSet.close();
+        ps.close();
+        conn.close();
+
+        return user;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
-        userDao.add(new User("3", "Ruru", "12345678"));
+        userDao.add(new User("4", "Ruru", "12345678"));
 
-        List<User> searchUsers = userDao.search();
+        List<User> searchUsers = userDao.findAll();
         for(User user : searchUsers) {
             System.out.println(user);
         }
-        userDao.conn.close();
     }
 }
