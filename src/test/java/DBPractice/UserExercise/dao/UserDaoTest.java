@@ -1,11 +1,11 @@
-package DBPractice.UserExercise;
+package DBPractice.UserExercise.dao;
 
+import DBPractice.UserExercise.dao.UserDao;
+import DBPractice.UserExercise.domain.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
     @Test

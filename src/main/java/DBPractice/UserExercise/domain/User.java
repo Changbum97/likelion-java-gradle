@@ -1,4 +1,4 @@
-package DBPractice.UserExercise;
+package DBPractice.UserExercise.domain;
 
 public class User {
     private String id;

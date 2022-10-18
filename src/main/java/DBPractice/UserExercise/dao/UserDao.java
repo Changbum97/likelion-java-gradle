@@ -1,4 +1,6 @@
-package DBPractice.UserExercise;
+package DBPractice.UserExercise.dao;
+
+import DBPractice.UserExercise.domain.User;
 
 import java.sql.*;
 import java.util.ArrayList;
