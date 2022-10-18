@@ -1,9 +1,9 @@
-package DBExercise.HospitalExercise;
+package DBPractice.HospitalExercise;
 
-import DBExercise.HospitalExercise.domain.Hospital;
-import DBExercise.HospitalExercise.fileIO.LineReaderAndParser;
-import DBExercise.HospitalExercise.fileIO.MakeSqlFile;
-import DBExercise.HospitalExercise.parser.HospitalParser;
+import DBPractice.HospitalExercise.domain.Hospital;
+import DBPractice.HospitalExercise.fileIO.LineReaderAndParser;
+import DBPractice.HospitalExercise.fileIO.MakeSqlFile;
+import DBPractice.HospitalExercise.parser.HospitalParser;
 
 import java.io.IOException;
 import java.util.List;

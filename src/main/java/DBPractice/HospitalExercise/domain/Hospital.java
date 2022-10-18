@@ -1,4 +1,4 @@
-package DBExercise.HospitalExercise.domain;
+package DBPractice.HospitalExercise.domain;
 
 public class Hospital {
     private String id;

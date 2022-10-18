@@ -1,6 +1,6 @@
-package DBExercise.HospitalExercise;
+package DBPractice.HospitalExercise;
 
-import DBExercise.HospitalExercise.domain.Hospital;
+import DBPractice.HospitalExercise.domain.Hospital;
 
 import java.io.IOException;
 import java.sql.*;

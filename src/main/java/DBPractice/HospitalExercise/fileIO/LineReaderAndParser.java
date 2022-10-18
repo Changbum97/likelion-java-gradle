@@ -1,6 +1,6 @@
-package DBExercise.HospitalExercise.fileIO;
+package DBPractice.HospitalExercise.fileIO;
 
-import DBExercise.HospitalExercise.parser.Parser;
+import DBPractice.HospitalExercise.parser.Parser;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,6 +1,6 @@
-package DBExercise.HospitalExercise.parser;
+package DBPractice.HospitalExercise.parser;
 
-import DBExercise.HospitalExercise.domain.Hospital;
+import DBPractice.HospitalExercise.domain.Hospital;
 
 public class HospitalParser implements Parser<Hospital> {
     @Override
