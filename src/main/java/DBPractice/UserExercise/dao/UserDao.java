@@ -126,7 +126,7 @@ public class UserDao {
 
         // 쿼리 실행
         ResultSet rs = ps.executeQuery();
-        System.out.println("DB get count 완료");
+        System.out.println("DB Get Count 완료");
         rs.next();
         int count = rs.getInt(1);
 
