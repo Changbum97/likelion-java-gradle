@@ -1,6 +1,7 @@
 package DBPractice.UserExercise.dao;
 
 import DBPractice.UserExercise.domain.User;
+import org.springframework.context.annotation.Configuration;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class UserDao {
         this.connectionMaker = connectionMaker;
     }
 
+    // 입력 받은 User을 DB에 추가
     public void add(User user) throws ClassNotFoundException, SQLException {
         Connection conn = connectionMaker.makeConnection();
 
@@ -33,7 +35,7 @@ public class UserDao {
 
         // id가 PK이기 때문에 중복되면 에러 발생 => try, catch로 잡아줌
         try {
-            // MySQL에 입력한 쿼리 실행
+            // 쿼리 실행
             int status = ps.executeUpdate();
             System.out.println("status : " + status);
             System.out.println("DB Insert 완료");
@@ -45,13 +47,14 @@ public class UserDao {
         conn.close();
     }
 
+    // Table에 있는 모든 User을 List로 return
     public List<User> findAll() throws SQLException {
         Connection conn = connectionMaker.makeConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement( "SELECT * FROM users;" );
 
-        // MySQL에 입력한 쿼리 실행
+        // 쿼리 실행
         ResultSet resultSet = ps.executeQuery();
         System.out.println("DB FindAll 완료");
 
@@ -70,6 +73,7 @@ public class UserDao {
         return users;
     }
 
+    // 입력받은 id에 해당하는 User return
     public User findById(String id) throws SQLException {
         Connection conn = connectionMaker.makeConnection();
 
@@ -79,7 +83,7 @@ public class UserDao {
         // 쿼리 파라미터 설정
         ps.setString(1, id);
 
-        // MySQL에 입력한 쿼리 실행
+        // 쿼리 실행
         ResultSet resultSet = ps.executeQuery();
         User user = null;
 
@@ -98,13 +102,38 @@ public class UserDao {
         return user;
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
-        userDao.add(new User("4", "Ruru", "12345678"));
+    // Table에 있는 모든 User 삭제
+    public void deleteAll() throws SQLException {
+        Connection conn = connectionMaker.makeConnection();
 
-        List<User> searchUsers = userDao.findAll();
-        for(User user : searchUsers) {
-            System.out.println(user);
-        }
+        // 쿼리 입력
+        PreparedStatement ps = conn.prepareStatement("DELETE FROM users;");
+
+        // 쿼리 실행
+        ps.executeUpdate();
+        System.out.println("DB DeleteAll 완료");
+
+        ps.close();
+        conn.close();
+    }
+
+    // Table에 있는 User의 수 return
+    public int getCount() throws SQLException {
+        Connection conn = connectionMaker.makeConnection();
+
+        // 쿼리 입력
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM users;");
+
+        // 쿼리 실행
+        ResultSet rs = ps.executeQuery();
+        System.out.println("DB get count 완료");
+        rs.next();
+        int count = rs.getInt(1);
+
+        rs.close();
+        ps.close();;
+        conn.close();
+
+        return count;
     }
 }
