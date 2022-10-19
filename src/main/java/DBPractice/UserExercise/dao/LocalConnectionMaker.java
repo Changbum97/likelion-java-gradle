@@ -1,7 +1,5 @@
 package DBPractice.UserExercise.dao;
 
-import DBPractice.UserExercise.dao.Interface.ConnectionMakerInterface;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Map;

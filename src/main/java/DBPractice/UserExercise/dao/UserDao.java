@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UserDao {
 
-    // Interface 구현체 사용
+    // Interface 구현체 사용 => AWS 사용하고 싶으면 AWSConnectionMaker 갖다 쓰면 됨
     private LocalConnectionMaker connectionMaker;
 
     public UserDao() {
