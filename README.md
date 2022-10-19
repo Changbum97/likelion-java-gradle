@@ -107,6 +107,10 @@
        - 단점 : 너무 많은 클래스들을 정의하게 될 수 있음 => 코드가 복잡해짐
     5. Spring 적용
        - 장점 : Bean을 만들어 놓고 불러 쓰기 좋음, SingleTone 패턴, 테스트하기 좋음
+  - 기능 추가
+    - deleteAll : 모든 행 지우기
+    - getCount : 모든 행의 개수 반환
+    - deleteAll, getCount 테스트 코드 추가
 
 ## CodeUp (해결한 문제)
 - c언어 기초 100제 : p1000 ~ p1099
