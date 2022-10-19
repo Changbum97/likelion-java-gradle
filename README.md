@@ -35,7 +35,8 @@
 
 ## Day 5 (10/11 화)
 - 알고리즘
-    - 입력받은 숫자의 자릿수 구하기, 각 자릿수 더하기
+    - 입력받은 숫자의 자릿수 구하기
+    - 각 자릿수 더하기
 
 ## Day 6 (10/12 수)
 - 알고리즘
@@ -53,23 +54,23 @@
 
 ## Day 9 (10/17 월)
 - 알고리즘
-  - 별찍기 (직각삼각형, 피라미드, 마름모 모양)
-- JAVA와 DB 연동 (UserExercise)
-  - MySQL 라이브러리 다운, 적용
-  - DriverManager, 환경변수 사용해 MySQL과 연결
-  - Insert, Select문 사용 예제
+  - 별찍기
+    - 직각삼각형
+    - 피라미드 
+    - 마름모
 
 ## Day 10 (10/18 화)
 - 알고리즘
-  - 별찍기 (직사각형, 정사각형, 재귀활용)
-- JAVA와 DB 연동 테스트코드 작성 (UserExercise)
-  - Insert한 값과 findById로 Select한 값이 일치하는지 테스트
-  - Insert, Select 등에서 Connection 부분이 같으므로 리팩토링 필요
-    1. Abstract Class 사용 : 다중 상속 불가
-    2. Class 분리 : Method가 고정
-    3. Interface 사용 => UserDao에서 interface 구현체 사용
+  - 별찍기
+    - 직사각형
+    - 정사각형
+    - 재귀를 활용한 별찍기
 
-## 미니프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
+## Day 11 (10/19 수)
+- 알고리즘
+  - 배열을 활용한 Stack 직접 구현 (push, pop)
+
+## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
   - 서울특별시 병의원 위치 정보.csv 파일 다운
   - csv파일 읽어와서 Parsing 작업을 통해 데이터 추출
@@ -85,6 +86,27 @@
   - sql 파일 따로 생성 안하고 JAVA와 DB 연동 후 INSERT 쿼리 직접 데이터 추가
 - 10/18 화
   - JAVA 연동을 통한 SELECT
+
+## 미니 프로젝트 2. Java와 DB 연동 (UserExercise)
+- 10/17 월
+  - JAVA와 DB 연동
+    - MySQL 라이브러리 다운, 적용
+    - DriverManager, 환경변수 사용해 MySQL과 연결
+    - Insert, Select문 사용 예제
+- 10/18 화
+  - JAVA와 DB 연동 테스트 코드 작성
+    - Insert한 값과 findById로 찾아온 값이 일치하는지 테스트
+  - Insert, Select 등에서 Connection 부분이 같으므로 리팩토링 필요
+    1. Abstract Class 적용 : 다중 상속이 불가능하다는 단점
+    2. Class 분리 : Method가 고정되는 단점
+    3. Interface 적용
+- 10/19 수
+  - 리팩토링 이어서 진행
+    4. Factory 적용
+       - 장점 : 객체들을 한 곳에서 관리할 수 있음, 확장성, 생성자가 아닌 메소드로 작동하기 때문에 리턴값을 가짐 => 상황에 따라 다른 객체 반환 가능
+       - 단점 : 너무 많은 클래스들을 정의하게 될 수 있음 => 코드가 복잡해짐
+    5. Spring 적용
+       - 장점 : Bean을 만들어 놓고 불러 쓰기 좋음, SingleTone 패턴, 테스트하기 좋음
 
 ## CodeUp (해결한 문제)
 - c언어 기초 100제 : p1000 ~ p1099
