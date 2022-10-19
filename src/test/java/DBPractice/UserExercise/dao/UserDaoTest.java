@@ -9,11 +9,13 @@ import java.sql.SQLException;
 class UserDaoTest {
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
-        User user = new User("9", "EternityHwan", "1234");
+        //UserDao userDao = new UserDao(new LocalConnectionMaker());
+        UserDao userDao = new UserDaoFactory().localUserDao();
+
+        User user = new User("10", "Nunu", "1234");
         userDao.add(user);
 
-        User selectedUser = userDao.findById("9");
-        Assertions.assertEquals("EternityHwan", selectedUser.getName());
+        User selectedUser = userDao.findById("10");
+        Assertions.assertEquals("Nunu", selectedUser.getName());
     }
 }
