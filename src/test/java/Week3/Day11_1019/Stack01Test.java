@@ -14,10 +14,24 @@ class Stack01Test {
         Stack01 stack01 = new Stack01(100);
         stack01.push(10);
         stack01.push(20);
+        stack01.push(30);
 
-        int[] arr = stack01.getArr();
+        int arr[] = stack01.getArr();
         Assertions.assertEquals(10, arr[0]);
         Assertions.assertEquals(20, arr[1]);
+        Assertions.assertEquals(30, arr[2]);
     }
 
+    @Test
+    @DisplayName("Stack Push And Pop Test")
+    void pushAndPopTest() {
+        Stack01 stack01 = new Stack01(100);
+        stack01.push(10);
+        stack01.push(20);
+        Assertions.assertEquals(20, stack01.pop());
+
+        stack01.push(30);
+        Assertions.assertEquals(30, stack01.pop());
+        Assertions.assertEquals(10, stack01.pop());
+    }
 }

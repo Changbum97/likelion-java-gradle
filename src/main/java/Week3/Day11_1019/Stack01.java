@@ -14,6 +14,10 @@ public class Stack01 {
         arr[pointer ++] = value;
     }
 
+    public int pop() {
+        return arr[-- pointer];
+    }
+
     public int[] getArr() {
         return arr;
     }
