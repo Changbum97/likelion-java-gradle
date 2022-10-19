@@ -1,7 +1,5 @@
 package DBPractice.UserExercise.dao;
 
-import DBPractice.UserExercise.dao.useAbstractClass.LocalUserDaoAbstractImpl;
-import DBPractice.UserExercise.dao.useInterface.LocalConnectionMaker;
 import DBPractice.UserExercise.domain.User;
 
 import java.sql.*;

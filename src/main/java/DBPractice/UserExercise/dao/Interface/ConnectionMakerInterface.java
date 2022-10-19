@@ -1,4 +1,4 @@
-package DBPractice.UserExercise.dao.useInterface;
+package DBPractice.UserExercise.dao.Interface;
 
 import java.sql.Connection;
 
