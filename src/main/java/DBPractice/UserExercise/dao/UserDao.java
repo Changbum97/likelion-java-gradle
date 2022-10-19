@@ -9,14 +9,14 @@ import java.util.List;
 public class UserDao {
 
     // Interface 구현체 사용 => AWS 사용하고 싶으면 AWSConnectionMaker 갖다 쓰면 됨
-    private LocalConnectionMaker connectionMaker;
+    private ConnectionMakerInterface connectionMaker;
 
     public UserDao() {
         connectionMaker = new LocalConnectionMaker();
     }
 
     // 기본은 local이지만 다른 ConnectionMaker을 주입하는것도 가능
-    public UserDao(LocalConnectionMaker connectionMaker) {
+    public UserDao(ConnectionMakerInterface connectionMaker) {
         this.connectionMaker = connectionMaker;
     }
 
