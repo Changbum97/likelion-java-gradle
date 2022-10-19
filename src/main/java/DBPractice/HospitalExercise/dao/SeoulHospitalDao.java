@@ -1,4 +1,4 @@
-package DBPractice.HospitalExercise;
+package DBPractice.HospitalExercise.dao;
 
 import DBPractice.HospitalExercise.domain.Hospital;
 
