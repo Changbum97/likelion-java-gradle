@@ -116,6 +116,13 @@
     - deleteAll : 모든 행 지우기
     - getCount : 모든 행의 개수 반환
     - deleteAll, getCount 테스트 코드 추가
+- 10/20 목
+  - UserDao findById 리팩토링
+    - 전에는 findById 결과값이 없었으면 null return
+    - 이번에는 결과값이 없으면 EmptyResultDataAccessException 을 발생 시킴
+  - 테스트 코드 리팩토링
+    - 없는 id를 검색해서 EmptyResultDataAccessException가 제대로 오는지 확인
+    - @BeforeEach 를 사용해 Unit Test마다 반복되는 코드 제거
 
 ## CodeUp (해결한 문제)
 - c언어 기초 100제 : p1000 ~ p1099
