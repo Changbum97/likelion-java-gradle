@@ -70,6 +70,11 @@
 - 알고리즘
   - 배열을 활용한 Stack 직접 구현 (push, pop)
 
+## Day 12 (10/20 목)
+- 알고리즘
+  - 배열을 활용한 Stack 직접 구현 (isEmpty, peek)
+- Test code에서 Exception Test (lambda 사용)
+
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
   - 서울특별시 병의원 위치 정보.csv 파일 다운
