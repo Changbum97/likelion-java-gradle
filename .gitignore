@@ -2,10 +2,7 @@
 .idea/
 out/
 OriginalData/
-settings.gradle
 build
 
 gradle
 .gradle
-gradlew
-gradlew.bat
