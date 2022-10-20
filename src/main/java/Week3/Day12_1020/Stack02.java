@@ -1,5 +1,7 @@
 package Week3.Day12_1020;
 
+import java.util.EmptyStackException;
+
 public class Stack02 {
 
     private int[] arr = new int[10000];
@@ -15,9 +17,17 @@ public class Stack02 {
     }
 
     public int pop() {
+        if(this.isEmpty() == true) {
+            System.out.println("스택이 비어있어서 pop 할 수 없습니다.");
+            throw new EmptyStackException();
+        }
         return arr[-- pointer];
     }
 
+    public boolean isEmpty() {
+        if(pointer == 0) return true;
+        return false;
+    }
     public int[] getArr() {
         return arr;
     }
