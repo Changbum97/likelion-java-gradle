@@ -17,9 +17,9 @@ class Stack01Test {
         stack01.push(30);
 
         int arr[] = stack01.getArr();
-        Assertions.assertEquals(10, arr[0]);
-        Assertions.assertEquals(20, arr[1]);
-        Assertions.assertEquals(30, arr[2]);
+        assertEquals(10, arr[0]);
+        assertEquals(20, arr[1]);
+        assertEquals(30, arr[2]);
     }
 
     @Test
@@ -28,10 +28,10 @@ class Stack01Test {
         Stack01 stack01 = new Stack01(100);
         stack01.push(10);
         stack01.push(20);
-        Assertions.assertEquals(20, stack01.pop());
+        assertEquals(20, stack01.pop());
 
         stack01.push(30);
-        Assertions.assertEquals(30, stack01.pop());
-        Assertions.assertEquals(10, stack01.pop());
+        assertEquals(30, stack01.pop());
+        assertEquals(10, stack01.pop());
     }
 }
