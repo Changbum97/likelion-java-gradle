@@ -24,6 +24,14 @@ public class Stack02 {
         return arr[-- pointer];
     }
 
+    public int peek() {
+        if(this.isEmpty() == true) {
+            System.out.println("스택이 비어있어서 peek 할 수 없습니다.");
+            throw new EmptyStackException();
+        }
+        return arr[pointer - 1];
+    }
+
     public boolean isEmpty() {
         if(pointer == 0) return true;
         return false;
@@ -31,5 +39,6 @@ public class Stack02 {
     public int[] getArr() {
         return arr;
     }
+
 
 }

@@ -17,7 +17,7 @@ class Stack02Test {
     @Test
     @DisplayName("Stack Push Test")
     void pushTest() {
-        Stack02 stack02 = new Stack02(100);
+        Stack02 stack02 = new Stack02(10);
         stack02.push(10);
         stack02.push(20);
         stack02.push(30);
@@ -33,7 +33,7 @@ class Stack02Test {
     @Test
     @DisplayName("Stack Push and Pop Test")
     void pushAndPopTest() {
-        Stack02 stack02 = new Stack02(100);
+        Stack02 stack02 = new Stack02(10);
         stack02.push(10);
         stack02.push(20);
         assertEquals(20, stack02.pop());
@@ -55,6 +55,18 @@ class Stack02Test {
         assertEquals(false, stack02.isEmpty());
 
         System.out.println("isEmpty Test 통과");
+    }
+
+    @Test
+    @DisplayName("Stack Peek Test")
+    void peekTest() {
+        Stack02 stack02 = new Stack02(10);
+        stack02.push(15);
+
+        assertEquals(15, stack02.peek());
+        assertEquals(15, stack02.peek());
+
+        System.out.println("Peek Test 통과");
     }
 
     @Test
