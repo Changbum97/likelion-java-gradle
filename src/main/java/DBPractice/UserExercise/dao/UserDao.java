@@ -2,6 +2,7 @@ package DBPractice.UserExercise.dao;
 
 import DBPractice.UserExercise.domain.User;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -99,6 +100,10 @@ public class UserDao {
         ps.close();
         conn.close();
 
+        // Exception Test를 위한 작업
+        if(user == null) {
+            throw new EmptyResultDataAccessException(1);
+        }
         return user;
     }
 
