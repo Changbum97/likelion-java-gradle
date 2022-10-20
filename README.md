@@ -123,6 +123,9 @@
   - 테스트 코드 리팩토링
     - 없는 id를 검색해서 EmptyResultDataAccessException가 제대로 오는지 확인
     - @BeforeEach 를 사용해 Unit Test마다 반복되는 코드 제거
+  - 예외 처리를 활용한 리소스 반환
+    - 전에 코드에서는 예외가 발생하면 ps.close, conn.close가 실행되지 않아 리소스를 반환하지 못했음
+    - try, catch, finally를 사용해 예외가 발생해도 리소스를 반환시켜 주도록 수정
 
 ## CodeUp (해결한 문제)
 - c언어 기초 100제 : p1000 ~ p1099
