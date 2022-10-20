@@ -2,7 +2,6 @@
 .idea/
 out/
 OriginalData/
-ExtractedData/
 settings.gradle
 build
 
