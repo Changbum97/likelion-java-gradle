@@ -12,6 +12,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = UserDaoFactory.class)
 class UserDaoTest {
@@ -35,8 +37,8 @@ class UserDaoTest {
         userDao.add(user);
 
         User findUser = userDao.findById("15");
-        Assertions.assertEquals("Nunu", findUser.getName());
-        Assertions.assertEquals("1234", findUser.getPassword());
+        assertEquals("Nunu", findUser.getName());
+        assertEquals("1234", findUser.getPassword());
     }
 
     @Test
@@ -45,11 +47,14 @@ class UserDaoTest {
         UserDao userDao = context.getBean("localUserDao", UserDao.class);
 
         userDao.deleteAll();
-        Assertions.assertEquals(0, userDao.getCount());
+        assertEquals(0, userDao.getCount());
 
         userDao.add( new User("1", "aa", "1234") );
-        userDao.add( new User( "2", "bb", "1234") );
-        Assertions.assertEquals(2, userDao.getCount());
+        assertEquals(1, userDao.getCount());
+        userDao.add( new User( "2", "bb", "1111") );
+        assertEquals(2, userDao.getCount());
+        userDao.add( new User( "3", "cc", "4321") );
+        assertEquals(3, userDao.getCount());
     }
 
 }
