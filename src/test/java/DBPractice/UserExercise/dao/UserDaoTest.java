@@ -2,15 +2,18 @@ package DBPractice.UserExercise.dao;
 
 import DBPractice.UserExercise.domain.User;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
+import java.util.EmptyStackException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,6 +24,15 @@ class UserDaoTest {
     @Autowired
     ApplicationContext context;
 
+    UserDao userDao;
+
+    // Unit 테스트 실행하기 전 userDao를 받아서 가게끔 설정해서 코드 간결하게 함
+    @BeforeEach
+    void setUserDao() {
+        // Spring 적용해 UserDaoFactory 불러오기
+        userDao = context.getBean("localUserDao", UserDao.class);
+    }
+
     @Test
     @DisplayName("User Insert And Select Test")
     void addAndFindByIdTest() throws SQLException, ClassNotFoundException {
@@ -29,9 +41,6 @@ class UserDaoTest {
 
         // interface를 자동으로 주입해주는 팩토리 사용
         // UserDao userDao = new UserDaoFactory().localUsexrDao();
-
-        // Spring 적용해 UserDaoFactory 불러오기
-        UserDao userDao = context.getBean("localUserDao", UserDao.class);
 
         User user = new User("15", "Nunu", "1234");
         userDao.add(user);
@@ -44,8 +53,6 @@ class UserDaoTest {
     @Test
     @DisplayName("User Delete All And Get Count Test")
     void deleteAllAndGetCountTest() throws SQLException, ClassNotFoundException {
-        UserDao userDao = context.getBean("localUserDao", UserDao.class);
-
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
 
@@ -62,9 +69,12 @@ class UserDaoTest {
     void finalTest() throws SQLException, ClassNotFoundException {
         User insertUser = new User("1", "kyeonghwan", "123");
 
-        UserDao userDao = context.getBean("localUserDao", UserDao.class);
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
+        // 모던 자바 표현(lambda)을 사용해서 exception test 진행
+        assertThrows(EmptyResultDataAccessException.class, () -> {
+            userDao.findById("1");
+        });
 
         userDao.add(insertUser);
         assertEquals(1, userDao.getCount());
