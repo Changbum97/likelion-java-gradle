@@ -26,7 +26,7 @@ class UserDaoTest {
 
     UserDao userDao;
 
-    // Unit 테스트 실행하기 전 userDao를 받아서 가게끔 설정해서 코드 간결하게 함
+    // Unit 테스트 실행하기 전마다 userDao를 받아가게끔 해서 반복되는 코드 제거
     @BeforeEach
     void setUserDao() {
         // Spring 적용해 UserDaoFactory 불러오기
