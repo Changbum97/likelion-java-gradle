@@ -1,4 +1,4 @@
-package DBPractice.UserExercise.dao.dbStrategy;
+package DBPractice.UserExercise.dao.dbQueryStrategy;
 
 import DBPractice.UserExercise.domain.User;
 
