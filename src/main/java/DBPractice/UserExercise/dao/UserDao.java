@@ -4,6 +4,7 @@ import DBPractice.UserExercise.dao.connectionMaker.ConnectionMakerInterface;
 import DBPractice.UserExercise.dao.connectionMaker.LocalConnectionMaker;
 import DBPractice.UserExercise.dao.dbQueryStrategy.AddStrategy;
 import DBPractice.UserExercise.dao.dbQueryStrategy.DeleteAllStrategy;
+import DBPractice.UserExercise.dao.dbQueryStrategy.GetCountStrategy;
 import DBPractice.UserExercise.dao.dbQueryStrategy.StatementStrategy;
 import DBPractice.UserExercise.domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -27,8 +28,97 @@ public class UserDao {
     }
 
     // 입력 받은 User을 DB에 추가
-    public void add(User user) throws ClassNotFoundException, SQLException {
+    public void add(User user) {
         jdbcContextWithStatementStrategy(new AddStrategy(user));
+    }
+
+    // Table에 있는 모든 User 삭제
+    public void deleteAll() {
+        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
+    }
+
+    public void jdbcContextWithStatementStrategy(StatementStrategy stmt) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = connectionMaker.makeConnection();
+
+            // 쿼리 입력
+            ps = stmt.makePreparedStatement(conn);
+
+            // 쿼리 실행
+            ps.executeUpdate();
+            System.out.println("쿼리 실행 완료");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            if(conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
+    // Table에 있는 User의 수 return
+    public int getCount() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = connectionMaker.makeConnection();
+
+            // 쿼리 입력
+            ps = new GetCountStrategy().makePreparedStatement(conn);
+
+            // 쿼리 실행
+            rs = ps.executeQuery();
+            System.out.println("DB Get Count 완료");
+            rs.next();
+            int count = rs.getInt(1);
+
+            return count;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            if(conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     // Table에 있는 모든 User을 List로 return
@@ -88,94 +178,5 @@ public class UserDao {
             throw new EmptyResultDataAccessException(1);
         }
         return user;
-    }
-
-    // Table에 있는 모든 User 삭제
-    public void deleteAll() throws SQLException {
-        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
-    }
-
-    // Table에 있는 User의 수 return
-    public int getCount() throws SQLException {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            conn = connectionMaker.makeConnection();
-
-            // 쿼리 입력
-            ps = conn.prepareStatement("SELECT COUNT(*) FROM users;");
-
-            // 쿼리 실행
-            rs = ps.executeQuery();
-            System.out.println("DB Get Count 완료");
-            rs.next();
-            int count = rs.getInt(1);
-
-            return count;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if(conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-    }
-
-    public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
-        Connection conn = null;
-        PreparedStatement ps = null;
-
-        try {
-            conn = connectionMaker.makeConnection();
-
-            // 쿼리 입력
-            ps = stmt.makePreparedStatement(conn);
-
-            // 쿼리 실행
-            ps.executeUpdate();
-            System.out.println("쿼리 실행 완료");
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if(conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
     }
 }
