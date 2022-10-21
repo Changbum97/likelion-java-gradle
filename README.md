@@ -133,6 +133,9 @@
   - 예외 처리를 활용한 리소스 반환
     - 전에 코드에서는 예외가 발생하면 ps.close, conn.close가 실행되지 않아 리소스를 반환하지 못했음
     - try, catch, finally를 사용해 예외가 발생해도 리소스를 반환시켜 주도록 수정
+- 10/21 금
+  - 반복되는 쿼리 생성 부분 (PreparedStatement)을 Strategy Pattern을 사용해서 반복 줄임
+  - connectionMaker, 쿼리 입력, 쿼리 실행, try/catch/finally 부분의 반복도 메소드로 빼서 반복 줄임
 
 ## CodeUp (해결한 문제)
 - c언어 기초 100제 : p1000 ~ p1099
