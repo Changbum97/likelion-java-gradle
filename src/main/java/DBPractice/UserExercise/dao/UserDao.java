@@ -1,8 +1,6 @@
 package DBPractice.UserExercise.dao;
 
-import DBPractice.UserExercise.AddStrategy;
 import DBPractice.UserExercise.domain.User;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.sql.*;
@@ -28,12 +26,7 @@ public class UserDao {
         Connection conn = connectionMaker.makeConnection();
 
         // 쿼리 입력
-        PreparedStatement ps = new AddStrategy().makePreparedStatement(conn);
-
-        // 쿼리 파라미터 설정
-        ps.setString(1, user.getId());
-        ps.setString(2, user.getName());
-        ps.setString(3, user.getPassword());
+        PreparedStatement ps = new AddStrategy(user).makePreparedStatement(conn);
 
         // id가 PK이기 때문에 중복되면 에러 발생 => try, catch로 잡아줌
         try {
