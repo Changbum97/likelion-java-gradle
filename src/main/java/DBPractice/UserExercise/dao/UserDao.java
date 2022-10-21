@@ -110,37 +110,7 @@ public class UserDao {
 
     // Table에 있는 모든 User 삭제
     public void deleteAll() throws SQLException {
-        Connection conn = null;
-        PreparedStatement ps = null;
-
-        try {
-            conn = connectionMaker.makeConnection();
-
-            // 쿼리 입력
-            ps = new DeleteAllStrategy().makePreparedStatement(conn);
-
-            // 쿼리 실행
-            ps.executeUpdate();
-            System.out.println("DB DeleteAll 완료");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if(conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
+        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
     }
 
     // Table에 있는 User의 수 return
@@ -174,6 +144,41 @@ public class UserDao {
                 }
             }
 
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            if(conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
+    public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = connectionMaker.makeConnection();
+
+            // 쿼리 입력
+            ps = stmt.makePreparedStatement(conn);
+
+            // 쿼리 실행
+            ps.executeUpdate();
+            System.out.println("쿼리 실행 완료");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
             if (ps != null) {
                 try {
                     ps.close();
