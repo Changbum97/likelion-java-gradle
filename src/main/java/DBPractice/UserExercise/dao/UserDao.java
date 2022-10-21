@@ -37,6 +37,7 @@ public class UserDao {
         jdbcContextWithStatementStrategy(new DeleteAllStrategy());
     }
 
+    // executeUpdate 사용하는 쿼리 실행
     public void jdbcContextWithStatementStrategy(StatementStrategy stmt) {
         Connection conn = null;
         PreparedStatement ps = null;
