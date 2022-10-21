@@ -11,7 +11,7 @@ class SolveBracketTest {
     @Test
     @DisplayName("괄호를 잘 푸는지 테스트")
     void solveBracketTest() {
-        SolveBracketByReplace sb = new SolveBracketByReplace();
+        SolveBracketByStack sb = new SolveBracketByStack();
 
         assertTrue(sb.solve("()()"));
         assertTrue(sb.solve("(())()"));
