@@ -1,5 +1,6 @@
 package DBPractice.UserExercise.dao;
 
+import DBPractice.UserExercise.AddStrategy;
 import DBPractice.UserExercise.domain.User;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -27,7 +28,7 @@ public class UserDao {
         Connection conn = connectionMaker.makeConnection();
 
         // 쿼리 입력
-        PreparedStatement ps = conn.prepareStatement( "INSERT INTO users(id, name, password) values (?, ?, ?);" );
+        PreparedStatement ps = new AddStrategy().makePreparedStatement(conn);
 
         // 쿼리 파라미터 설정
         ps.setString(1, user.getId());
