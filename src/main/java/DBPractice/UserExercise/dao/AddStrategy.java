@@ -1,6 +1,5 @@
 package DBPractice.UserExercise.dao;
 
-import DBPractice.UserExercise.dao.StatementStrategy;
 import DBPractice.UserExercise.domain.User;
 
 import java.sql.Connection;
