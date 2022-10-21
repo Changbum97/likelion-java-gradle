@@ -1,5 +1,10 @@
 package DBPractice.UserExercise.dao;
 
+import DBPractice.UserExercise.dao.connectionMaker.ConnectionMakerInterface;
+import DBPractice.UserExercise.dao.connectionMaker.LocalConnectionMaker;
+import DBPractice.UserExercise.dao.dbStrategy.AddStrategy;
+import DBPractice.UserExercise.dao.dbStrategy.DeleteAllStrategy;
+import DBPractice.UserExercise.dao.dbStrategy.StatementStrategy;
 import DBPractice.UserExercise.domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
 

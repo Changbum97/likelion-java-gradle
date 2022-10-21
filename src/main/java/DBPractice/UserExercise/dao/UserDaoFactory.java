@@ -1,5 +1,6 @@
 package DBPractice.UserExercise.dao;
 
+import DBPractice.UserExercise.dao.connectionMaker.LocalConnectionMaker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

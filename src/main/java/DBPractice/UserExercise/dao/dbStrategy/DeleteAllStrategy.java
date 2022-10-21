@@ -1,4 +1,4 @@
-package DBPractice.UserExercise.dao;
+package DBPractice.UserExercise.dao.dbStrategy;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
