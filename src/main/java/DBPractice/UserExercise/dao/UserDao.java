@@ -116,7 +116,7 @@ public class UserDao {
             conn = connectionMaker.makeConnection();
 
             // 쿼리 입력
-            ps = conn.prepareStatement("DELETE FROM users;");
+            ps = new DeleteAllStrategy().makePreparedStatement(conn);
 
             // 쿼리 실행
             ps.executeUpdate();
