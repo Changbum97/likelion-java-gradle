@@ -23,23 +23,7 @@ public class UserDao {
 
     // 입력 받은 User을 DB에 추가
     public void add(User user) throws ClassNotFoundException, SQLException {
-        Connection conn = connectionMaker.makeConnection();
-
-        // 쿼리 입력
-        PreparedStatement ps = new AddStrategy(user).makePreparedStatement(conn);
-
-        // id가 PK이기 때문에 중복되면 에러 발생 => try, catch로 잡아줌
-        try {
-            // 쿼리 실행
-            int status = ps.executeUpdate();
-            System.out.println("status : " + status);
-            System.out.println("DB Insert 완료");
-        } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("id 중복");
-        }
-
-        ps.close();
-        conn.close();
+        jdbcContextWithStatementStrategy(new AddStrategy(user));
     }
 
     // Table에 있는 모든 User을 List로 return
