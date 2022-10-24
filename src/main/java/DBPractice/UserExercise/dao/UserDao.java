@@ -50,7 +50,7 @@ public class UserDao {
                 user.getId(), user.getName(), user.getPassword());
     }
 
-    public int getCount() throws SQLException {
+    public int getCount() {
         return this.jdbcTemplate.queryForObject("select count(*) from users;", Integer.class);
     }
 
