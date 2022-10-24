@@ -19,8 +19,10 @@ public class UserDao {
     // Interface 구현체 사용 => AWS 사용하고 싶으면 AWSConnectionMaker 갖다 쓰면 됨
     private ConnectionMakerInterface connectionMaker;
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
+    private final JdbcContext jdbcContext;
 
+    /*
     public UserDao() {
         connectionMaker = new LocalConnectionMaker();
     }
@@ -28,15 +30,16 @@ public class UserDao {
     // 기본은 local이지만 다른 ConnectionMaker을 주입하는것도 가능
     public UserDao(ConnectionMakerInterface connectionMaker) {
         this.connectionMaker = connectionMaker;
-    }
+    }*/
 
     public UserDao(DataSource dataSource) {
         this.dataSource = dataSource;
+        this.jdbcContext = new JdbcContext(dataSource);
     }
 
     // 입력 받은 User을 DB에 추가
     public void add(User user) {
-        jdbcContextWithStatementStrategy(new StatementStrategy() {
+        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
             @Override
             public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
                 PreparedStatement pstmt = null;
@@ -55,49 +58,21 @@ public class UserDao {
         // jdbcContextWithStatementStrategy(new DeleteAllStrategy());
 
         // 익명 클래스 사용
-        jdbcContextWithStatementStrategy(new StatementStrategy() {
+        /*jdbcContextWithStatementStrategy(new StatementStrategy() {
+            @Override
+            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
+                return conn.prepareStatement("delete from users");
+            }
+        });*/
+
+        // jdbcContext 사용
+        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
             @Override
             public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
                 return conn.prepareStatement("delete from users");
             }
         });
-    }
 
-    // executeUpdate 사용하는 쿼리 실행
-    public void jdbcContextWithStatementStrategy(StatementStrategy stmt) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-
-        try {
-            //conn = connectionMaker.makeConnection();
-            conn = dataSource.getConnection();
-
-            // 쿼리 입력
-            ps = stmt.makePreparedStatement(conn);
-
-            // 쿼리 실행
-            ps.executeUpdate();
-            System.out.println("쿼리 실행 완료");
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if(conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
     }
 
     // Table에 있는 User의 수 return

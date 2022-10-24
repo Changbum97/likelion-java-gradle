@@ -19,11 +19,11 @@ public class UserDaoFactory {
         return new UserDao(localDataSource());
     }
 
-    @Bean
+/*    @Bean
     public UserDao awsUserDao() {
         UserDao userDao = new UserDao(new LocalConnectionMaker());
         return userDao;
-    }
+    }*/
 
     @Bean
     public DataSource localDataSource() {
