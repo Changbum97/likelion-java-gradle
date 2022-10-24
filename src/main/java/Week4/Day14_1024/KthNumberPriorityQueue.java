@@ -8,8 +8,23 @@ public class KthNumberPriorityQueue {
         int[] array = {1, 5, 2, 6, 3, 7, 4};
         int[][] commands = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
 
-        Solution s = new Solution();
-        System.out.println(Arrays.toString(s.solution(array, commands)));
+        QueueTest();
+
+//        Solution s = new Solution();
+//        System.out.println(Arrays.toString(s.solution(array, commands)));
+    }
+
+    static void QueueTest() {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        int[] arr = {1, 5, 2, 6, 3, 7, 4};
+        for(int i = 0 ; i < arr.length ; i ++) {
+            pq.add(arr[i]);
+        }
+
+        while(!pq.isEmpty()) {
+            System.out.print(pq.poll() + " ");
+        }
     }
 
     static class Solution {
