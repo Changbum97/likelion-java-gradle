@@ -37,6 +37,17 @@ public class UserDao {
         this.jdbcContext = new JdbcContext(dataSource);
     }
 
+    // Table에 있는 모든 User 삭제
+    public void deleteAll() {
+        // jdbcContext 사용
+        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
+            @Override
+            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
+                return conn.prepareStatement("delete from users");
+            }
+        });
+    }
+
     // 입력 받은 User을 DB에 추가
     public void add(User user) {
         jdbcContext.workWithStatementStrategy(new StatementStrategy() {
@@ -50,29 +61,6 @@ public class UserDao {
                 return pstmt;
             }
         });
-    }
-
-    // Table에 있는 모든 User 삭제
-    public void deleteAll() {
-        // 익명 클래스 사용 X
-        // jdbcContextWithStatementStrategy(new DeleteAllStrategy());
-
-        // 익명 클래스 사용
-        /*jdbcContextWithStatementStrategy(new StatementStrategy() {
-            @Override
-            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
-                return conn.prepareStatement("delete from users");
-            }
-        });*/
-
-        // jdbcContext 사용
-        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
-            @Override
-            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
-                return conn.prepareStatement("delete from users");
-            }
-        });
-
     }
 
     // Table에 있는 User의 수 return
