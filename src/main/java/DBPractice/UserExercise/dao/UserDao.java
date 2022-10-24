@@ -8,6 +8,7 @@ import DBPractice.UserExercise.dao.dbQueryStrategy.GetCountStrategy;
 import DBPractice.UserExercise.dao.dbQueryStrategy.StatementStrategy;
 import DBPractice.UserExercise.domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -22,6 +23,8 @@ public class UserDao {
     private final DataSource dataSource;
     private final JdbcContext jdbcContext;
 
+    private JdbcTemplate jdbcTemplate;
+
     /*
     public UserDao() {
         connectionMaker = new LocalConnectionMaker();
@@ -35,17 +38,12 @@ public class UserDao {
     public UserDao(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcContext = new JdbcContext(dataSource);
+        //this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     // Table에 있는 모든 User 삭제
     public void deleteAll() {
-        // jdbcContext 사용
-        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
-            @Override
-            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
-                return conn.prepareStatement("delete from users");
-            }
-        });
+        jdbcContext.executeSql("delete from users");
     }
 
     // 입력 받은 User을 DB에 추가
