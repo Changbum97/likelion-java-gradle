@@ -6,10 +6,6 @@ public class KthNumber {
     public static void main(String[] args) {
         int[] array = {1, 5, 2, 6, 3, 7, 4};
         int[][] commands = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
-        int x = 1;
-        int y = 3;
-        int[] brr = Arrays.copyOfRange(array, x, y);
-        System.out.println(Arrays.toString(brr));
 
         Solution s = new Solution();
         System.out.println(Arrays.toString(s.solution(array, commands)));
