@@ -41,18 +41,15 @@ public class UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    // Table에 있는 모든 User 삭제
     public void deleteAll() {
         jdbcContext.executeSql("delete from users");
     }
 
-    // 입력 받은 User을 DB에 추가
     public void add(User user) {
         this.jdbcTemplate.update("insert into users(id, name, password) values (?,?,?);",
                 user.getId(), user.getName(), user.getPassword());
     }
 
-    // Table에 있는 User의 수 return
     public int getCount() throws SQLException {
         return this.jdbcTemplate.queryForObject("select count(*) from users;", Integer.class);
     }
