@@ -36,12 +36,31 @@ public class UserDao {
 
     // 입력 받은 User을 DB에 추가
     public void add(User user) {
-        jdbcContextWithStatementStrategy(new AddStrategy(user));
+        jdbcContextWithStatementStrategy(new StatementStrategy() {
+            @Override
+            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
+                PreparedStatement pstmt = null;
+                pstmt = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES(?,?,?);");
+                pstmt.setString(1, user.getId());
+                pstmt.setString(2, user.getName());
+                pstmt.setString(3, user.getPassword());
+                return pstmt;
+            }
+        });
     }
 
     // Table에 있는 모든 User 삭제
     public void deleteAll() {
-        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
+        // 익명 클래스 사용 X
+        // jdbcContextWithStatementStrategy(new DeleteAllStrategy());
+
+        // 익명 클래스 사용
+        jdbcContextWithStatementStrategy(new StatementStrategy() {
+            @Override
+            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
+                return conn.prepareStatement("delete from users");
+            }
+        });
     }
 
     // executeUpdate 사용하는 쿼리 실행
