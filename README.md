@@ -82,6 +82,11 @@
   - 스택을 활용한 괄호 풀기 (소괄호, 중괄호, 대괄호)
   - 스택 괄호 풀기 테스트 진행
 
+## Day 14 (10/24 월)
+- 알고리즘
+  - Arrays.copyOfRange() 메소드를 사용한 배열 자르기
+  - PriorityQueue 사용 예제
+
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
   - 서울특별시 병의원 위치 정보.csv 파일 다운
@@ -136,6 +141,9 @@
 - 10/21 금
   - 반복되는 쿼리 생성 부분 (PreparedStatement)을 Strategy Pattern을 사용해서 반복 줄임
   - connectionMaker, 쿼리 입력, 쿼리 실행, try/catch/finally 부분의 반복도 메소드로 빼서 반복 줄임
+- 10/24 월
+  - Java에 내장된 DataSource Interface를 적용함으로서 직접 구현했던 ConnectionMakerInterface 필요 없어짐
+  - 익명 클래스와 JDBC Context를 적용함으로서 중복되는 코드 줄임 
 
 ## CodeUp (해결한 문제)
 - c언어 기초 100제 : p1000 ~ p1099
