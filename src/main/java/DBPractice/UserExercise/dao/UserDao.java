@@ -9,6 +9,7 @@ import DBPractice.UserExercise.dao.dbQueryStrategy.StatementStrategy;
 import DBPractice.UserExercise.domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,8 @@ public class UserDao {
     // Interface 구현체 사용 => AWS 사용하고 싶으면 AWSConnectionMaker 갖다 쓰면 됨
     private ConnectionMakerInterface connectionMaker;
 
+    private DataSource dataSource;
+
     public UserDao() {
         connectionMaker = new LocalConnectionMaker();
     }
@@ -25,6 +28,10 @@ public class UserDao {
     // 기본은 local이지만 다른 ConnectionMaker을 주입하는것도 가능
     public UserDao(ConnectionMakerInterface connectionMaker) {
         this.connectionMaker = connectionMaker;
+    }
+
+    public UserDao(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     // 입력 받은 User을 DB에 추가
@@ -43,7 +50,8 @@ public class UserDao {
         PreparedStatement ps = null;
 
         try {
-            conn = connectionMaker.makeConnection();
+            //conn = connectionMaker.makeConnection();
+            conn = dataSource.getConnection();
 
             // 쿼리 입력
             ps = stmt.makePreparedStatement(conn);
@@ -80,7 +88,8 @@ public class UserDao {
         ResultSet rs = null;
 
         try {
-            conn = connectionMaker.makeConnection();
+            //conn = connectionMaker.makeConnection();
+            conn = dataSource.getConnection();
 
             // 쿼리 입력
             ps = new GetCountStrategy().makePreparedStatement(conn);
@@ -124,7 +133,8 @@ public class UserDao {
 
     // Table에 있는 모든 User을 List로 return
     public List<User> findAll() throws SQLException {
-        Connection conn = connectionMaker.makeConnection();
+        //Connection conn = connectionMaker.makeConnection();
+        Connection conn = dataSource.getConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement( "SELECT * FROM users;" );
@@ -150,7 +160,8 @@ public class UserDao {
 
     // 입력받은 id에 해당하는 User return
     public User findById(String id) throws SQLException {
-        Connection conn = connectionMaker.makeConnection();
+        //Connection conn = connectionMaker.makeConnection();
+        Connection conn = dataSource.getConnection();
 
         // 쿼리 입력
         PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE id = ?;");
