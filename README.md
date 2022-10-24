@@ -148,6 +148,7 @@
   - JDBC Template 적용
     - 지금까지 했던 모든 작업이 JDBC Template으로 이미 정의되어 있음
     - 다른 코드 작성할 필요 없이 Data Source, JDBC Template만 문법에 맞게끔 사용해주면 모든 기능 구현 가능
+  - findAll 기능 추가
 
 ## CodeUp (해결한 문제)
 - c언어 기초 100제 : p1000 ~ p1099
