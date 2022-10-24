@@ -38,7 +38,7 @@ public class UserDao {
     public UserDao(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcContext = new JdbcContext(dataSource);
-        //this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     // Table에 있는 모든 User 삭제
@@ -63,7 +63,9 @@ public class UserDao {
 
     // Table에 있는 User의 수 return
     public int getCount() throws SQLException {
-        Connection conn = null;
+        int cnt = this.jdbcTemplate.queryForObject("select count(*) from users;", Integer.class);
+        return cnt;
+        /*Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -108,7 +110,7 @@ public class UserDao {
                     throw new RuntimeException(e);
                 }
             }
-        }
+        }*/
     }
 
     // Table에 있는 모든 User을 List로 return
