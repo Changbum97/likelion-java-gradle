@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -65,15 +66,11 @@ class UserDaoTest {
 
     @Test
     @DisplayName("Test all")
-    void finalTest() throws SQLException, ClassNotFoundException {
-        User insertUser = new User("1", "kyeonghwan", "123");
+    void finalTest() {
+        User insertUser = new User("1", "aaa", "123");
 
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
-        // 모던 자바 표현(lambda)을 사용해서 exception test 진행
-        assertThrows(EmptyResultDataAccessException.class, () -> {
-            userDao.findById("1");
-        });
 
         userDao.add(insertUser);
         assertEquals(1, userDao.getCount());
@@ -82,5 +79,12 @@ class UserDaoTest {
 
         assertEquals(insertUser.getName(), findUser.getName());
         assertEquals(insertUser.getPassword(), findUser.getPassword());
+
+        userDao.add(new User("2", "bbb", "1234"));
+        userDao.add(new User("3", "ccc", "4321"));
+        userDao.add(new User("4", "ddd", "1111"));
+
+        List<User> users = userDao.findAll();
+        assertEquals(4, users.size());
     }
 }
