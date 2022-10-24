@@ -144,6 +144,10 @@
 - 10/24 월
   - Java에 내장된 DataSource Interface를 적용함으로서 직접 구현했던 ConnectionMakerInterface 필요 없어짐
   - 익명 클래스와 JDBC Context를 적용함으로서 중복되는 코드 줄임 
+  - Template Callback을 적용함으로서 deleteAll, add, getCount 등의 기능에서 sql query만 넘겨주면 되게끔 처리
+  - JDBC Template 적용
+    - 지금까지 했던 모든 작업이 JDBC Template으로 이미 정의되어 있음
+    - 다른 코드 작성할 필요 없이 Data Source, JDBC Template만 문법에 맞게끔 사용해주면 모든 기능 구현 가능
 
 ## CodeUp (해결한 문제)
 - c언어 기초 100제 : p1000 ~ p1099
