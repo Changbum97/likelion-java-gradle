@@ -48,69 +48,13 @@ public class UserDao {
 
     // 입력 받은 User을 DB에 추가
     public void add(User user) {
-        jdbcContext.workWithStatementStrategy(new StatementStrategy() {
-            @Override
-            public PreparedStatement makePreparedStatement(Connection conn) throws SQLException {
-                PreparedStatement pstmt = null;
-                pstmt = conn.prepareStatement("INSERT INTO users(id, name, password) VALUES(?,?,?);");
-                pstmt.setString(1, user.getId());
-                pstmt.setString(2, user.getName());
-                pstmt.setString(3, user.getPassword());
-                return pstmt;
-            }
-        });
+        this.jdbcTemplate.update("insert into users(id, name, password) values (?,?,?);",
+                user.getId(), user.getName(), user.getPassword());
     }
 
     // Table에 있는 User의 수 return
     public int getCount() throws SQLException {
-        int cnt = this.jdbcTemplate.queryForObject("select count(*) from users;", Integer.class);
-        return cnt;
-        /*Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            //conn = connectionMaker.makeConnection();
-            conn = dataSource.getConnection();
-
-            // 쿼리 입력
-            ps = new GetCountStrategy().makePreparedStatement(conn);
-
-            // 쿼리 실행
-            rs = ps.executeQuery();
-            System.out.println("DB Get Count 완료");
-            rs.next();
-            int count = rs.getInt(1);
-
-            return count;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if(conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }*/
+        return this.jdbcTemplate.queryForObject("select count(*) from users;", Integer.class);
     }
 
     // Table에 있는 모든 User을 List로 return
