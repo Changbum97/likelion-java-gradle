@@ -23,7 +23,7 @@ public class UserDao {
     private final DataSource dataSource;
     private final JdbcContext jdbcContext;
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     /*
     public UserDao() {
