@@ -3,7 +3,7 @@ package Programmers.digit;
 import java.util.Scanner;
 
 /**
- * 프로그래머스 : 자릿수 더하기
+ * 프로그래머스 자릿수 더하기
  */
 public class AddAllDigit {
 
