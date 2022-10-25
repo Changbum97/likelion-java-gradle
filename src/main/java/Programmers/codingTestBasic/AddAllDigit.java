@@ -1,4 +1,4 @@
-package Programmers.digit;
+package Programmers.codingTestBasic;
 
 import java.util.Scanner;
 
