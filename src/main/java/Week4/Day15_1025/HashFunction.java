@@ -14,4 +14,5 @@ public class HashFunction {
         int result = hf.hash("changbum");
         System.out.println(result);
     }
+
 }

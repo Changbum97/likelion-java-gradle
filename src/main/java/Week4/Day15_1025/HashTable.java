@@ -50,7 +50,6 @@ public class HashTable {
         System.out.printf("입력 수 : %d, 중복 수 : %d\n", names.length, names.length - nameSet.size());
 
         System.out.println("ChangbumAn : " + ht.search("ChangbumAn") + "번 방에 저장되어 있음");
-
     }
 
 }
