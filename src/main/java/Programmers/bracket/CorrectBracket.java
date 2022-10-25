@@ -1,8 +1,5 @@
 package Programmers.bracket;
 
-
-import Programmers.digit.AddAllDigit;
-
 import java.util.Scanner;
 
 /**
