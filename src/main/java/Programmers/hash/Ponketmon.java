@@ -23,8 +23,8 @@ public class Ponketmon {
             for(int num : nums) {
                 set.add(num);
             }
-            answer = Math.min(set.size(), nums.length/2);
 
+            answer = Math.min(set.size(), nums.length/2);
             return answer;
         }
     }
