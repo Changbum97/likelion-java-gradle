@@ -43,9 +43,7 @@ public class NotCompletionPlayer {
             }
 
             answer = (String) map.keySet().toArray()[0];
-
             return answer;
         }
     }
-
 }
