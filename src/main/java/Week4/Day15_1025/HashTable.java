@@ -26,7 +26,7 @@ public class HashTable {
     public void insert(String key, int value) {
         int hashCode = hash(key);
         this.table[hashCode] = value;
-        System.out.println(key + " : " + hashCode + "방에 저장이 완료되었습니다.");
+        System.out.println(key + " : " + hashCode + "번 방에 저장이 완료되었습니다.");
     }
 
     public int search(String key) {
@@ -39,17 +39,17 @@ public class HashTable {
 
         HashTable ht = new HashTable(200);
         Set<Integer> nameSet = new HashSet<>();
-        for(int i = 0 ; i < names.length ; i ++) {
-            nameSet.add(ht.hash(names[i]));
-        }
-
-        System.out.printf("%d %d\n", names.length, nameSet.size());
 
         for(int i = 0 ; i < names.length ; i ++) {
             ht.insert(names[i], ht.hash(names[i]));
         }
 
-        System.out.println(ht.search("ChangbumAn"));
+        for(int i = 0 ; i < names.length ; i ++) {
+            nameSet.add(ht.hash(names[i]));
+        }
+        System.out.printf("입력 수 : %d, 중복 수 : %d\n", names.length, names.length - nameSet.size());
+
+        System.out.println("ChangbumAn : " + ht.search("ChangbumAn") + "번 방에 저장되어 있음");
 
     }
 

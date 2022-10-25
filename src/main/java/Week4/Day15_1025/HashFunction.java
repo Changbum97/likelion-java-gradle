@@ -11,7 +11,7 @@ public class HashFunction {
 
     public static void main(String[] args) {
         HashFunction hf = new HashFunction();
-        int result = hf.hash("kyeongrok");
+        int result = hf.hash("changbum");
         System.out.println(result);
     }
 }
