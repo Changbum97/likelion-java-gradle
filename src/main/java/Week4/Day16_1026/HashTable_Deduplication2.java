@@ -3,14 +3,12 @@ package Week4.Day16_1026;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HashTable_Deduplication {
+public class HashTable_Deduplication2 {
 
-    private int size = 10000;
-    private List<Node>[] table = new ArrayList[size];
+    private int size;
+    private List<String>[] table;
 
-    public HashTable_Deduplication() {}
-
-    public HashTable_Deduplication(int size) {
+    public HashTable_Deduplication2(int size) {
         this.size = size;
         this.table = new ArrayList[size];
     }
@@ -23,51 +21,29 @@ public class HashTable_Deduplication {
         return asciiSum % size;
     }
 
-    public void insert(String key, int value) {
+    public void insert(String key) {
         int hashIdx = hash(key);
         if(this.table[hashIdx] == null) {
             this.table[hashIdx] = new ArrayList<>();
         }
-        this.table[hashIdx].add(new Node(key, value));
+        this.table[hashIdx].add(key);
     }
 
     public int search(String key) {
-        System.out.println(key + " : " + hash(key) + "번 방");
-
-        List<Node> nodes = this.table[hash(key)];
-        for(Node node : nodes) {
-            if(key.equals(node.key)) {
-                return node.value;
-            }
-        }
-        return -1;
+        return this.hash(key);
     }
 
     public static void main(String[] args) {
         // 학생 이름 80개
         // String[] names = new String[]{"DongyeonKang", "SubinKang", "KwanwunKo", "HyunseokKo", "KyoungdukKoo", "YeonjiGu", "SoyeonKown", "OhsukKwon", "GunwooKim", "KiheonKim", "NayeongKim", "DohyeonKim", "MinkyoungKim", "MinjiKim", "SanghoKim", "SolbaeKim", "YejinKim", "EungjunKim", "JaegeunKim", "JeonghyeonKim", "JunhoKim", "JisuKim", "kimjinah", "HaneulKim", "HeejungKim", "KimoonPark", "EunbinPark", "JeongHoonPark", "JeminPark", "TaegeunPark", "JiwonBae", "SeunggeunBaek", "JihwanByeon", "HeungseopByeon", "JeongHeeSeo", "TaegeonSeo", "SeeYunSeok", "SuyeonSeong", "SeyoelSon", "MinjiSong", "JinwooSong", "hyunboSim", "SominAhn", "JiyoungAhn", "ChangbumAn", "SoonminEom", "HyeongsangOh", "SuinWoo", "JuwanWoo", "InkyuYoon", "GahyunLee", "DaonLee", "DohyunLee", "SanghunLee", "SujinLee", "AjinLee", "YeonJae", "HyeonjuLee", "HakjunYim", "SeoyunJang", "SeohyeonJang", "JinseonJang", "SujinJeon", "SeunghwanJeon", "DaehwanJung", "JaeHyunJeung", "HeejunJeong", "GukhyeonCho", "MunjuJo", "YejiJo", "ChanminJu", "MinjunChoi", "SujeongChoi", "SeunghoChoi", "AyeongChoi", "GeonjooHan", "JinhyuckHeo", "MinwooHwang", "SieunHwang", "JunhaHwang"};
 
-        HashTable_Deduplication ht = new HashTable_Deduplication(200);
+        HashTable_Deduplication2 ht = new HashTable_Deduplication2(200);
 
-        ht.insert("Yoonseo", 1);
-        ht.insert("Seoyoon", 2);
+        ht.insert("Yoonseo");
+        ht.insert("Seoyoon");
 
-        ht.search("Seoyoon");
-
-        if(ht.search("Yoonseo") == 1) {
-            System.out.println("테스트 성공");
-        } else {
-            System.out.println("테스트 실패");
-        }
+        System.out.println(ht.search("Yoonseo"));
+        System.out.println(ht.search("Seoyoon"));
     }
 
-    class Node {
-        String key;
-        int value;
-
-        public Node(String key, int value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
 }
