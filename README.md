@@ -93,6 +93,10 @@
 - 알고리즘
   - Hash, HashTable 사용 예제
 
+## Day16 (10/26 수)
+- 알고리즘
+  - Hash Table 충돌 제거
+
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
   - 서울특별시 병의원 위치 정보.csv 파일 다운
