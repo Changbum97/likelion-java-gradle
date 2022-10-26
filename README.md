@@ -95,7 +95,7 @@
 
 ## Day16 (10/26 수)
 - 알고리즘
-  - Hash Table 충돌 제거
+  - Hash Table 중복 제거 (List 사용)
 
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
