@@ -3,6 +3,9 @@ package Programmers.hash;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 프로그래머스 완주하지 못한 선수 (Hash Table 사용)
+ */
 public class NotCompletionPlayer_useHash {
 
     public static void main(String[] args) {
