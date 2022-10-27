@@ -102,6 +102,7 @@
   - 프로그래머스 완주하지 못한 선수
     1. Hash Table 사용
     2. Hash Map 사용
+    3. Hash Map 사용 -> getOrDefault 사용
 
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
