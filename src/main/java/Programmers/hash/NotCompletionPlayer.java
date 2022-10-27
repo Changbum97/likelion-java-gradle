@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 프로그래머스 완주하지 못한 선수
+ * 프로그래머스 완주하지 못한 선수 (HashMap 사용)
  */
 public class NotCompletionPlayer {
 
