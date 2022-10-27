@@ -21,6 +21,7 @@ public class NotCompletionPlayer {
             String answer = "";
             Map<String, Integer> map = new HashMap<>();
 
+            // 선수 추가
             for(int i = 0 ; i < participant.length ; i ++) {
                 String name = participant[i];
                 if(map.containsKey(name)) {
@@ -30,6 +31,7 @@ public class NotCompletionPlayer {
                 }
             }
 
+            // 선수 제거
             for(int i = 0 ; i < completion.length ; i ++) {
                 String name = completion[i];
                 if(map.containsKey(name)) {
@@ -42,6 +44,7 @@ public class NotCompletionPlayer {
                 }
             }
 
+            // map에 마지막 남은것이 정답
             answer = (String) map.keySet().toArray()[0];
             return answer;
         }
