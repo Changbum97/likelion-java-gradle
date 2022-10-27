@@ -21,7 +21,7 @@ public class NotCompletionPlayer {
             String answer = "";
             Map<String, Integer> map = new HashMap<>();
 
-            // 선수 추가
+            /* 선수 추가
             for(int i = 0 ; i < participant.length ; i ++) {
                 String name = participant[i];
                 if(map.containsKey(name)) {
@@ -29,6 +29,12 @@ public class NotCompletionPlayer {
                 } else {
                     map.put(name, 1);
                 }
+            }*/
+
+            // 선수 추가 (getOrDefault 메소드 사용)
+            for(String name : participant) {
+                // 있으면 값 return, 없으면 default값(0) return
+                map.put(name, map.getOrDefault(name, 0) + 1);
             }
 
             // 선수 제거
