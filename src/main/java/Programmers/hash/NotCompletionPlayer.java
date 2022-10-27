@@ -19,8 +19,8 @@ public class NotCompletionPlayer {
     static class Solution {
         public String solution(String[] participant, String[] completion) {
             String answer = "";
-
             Map<String, Integer> map = new HashMap<>();
+
             for(int i = 0 ; i < participant.length ; i ++) {
                 String name = participant[i];
                 if(map.containsKey(name)) {
