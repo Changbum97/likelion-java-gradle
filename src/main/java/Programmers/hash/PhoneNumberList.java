@@ -19,9 +19,6 @@ public class PhoneNumberList {
             Set<String> set = new HashSet<>();
 
             for(String phone_number : phone_book) {
-                // 같은 번호가 있으면 false return
-                if(set.contains(phone_number)) return false;
-
                 set.add(phone_number);
             }
 
