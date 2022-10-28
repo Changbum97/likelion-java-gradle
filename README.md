@@ -104,6 +104,11 @@
     2. Hash Map 사용
     3. Hash Map 사용 -> getOrDefault 사용
 
+## Day18 (10/28 금)
+- 알고리즘
+  - 프로그래머스 폰켓못
+    - Hash Set 사용
+
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
   - 서울특별시 병의원 위치 정보.csv 파일 다운
