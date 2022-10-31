@@ -19,7 +19,7 @@ public class PrepairTest {
              */
             int[] arr = new int[]{1, 2, 3, 4, 5};
             int[] brr = new int[]{2, 1, 2, 3, 2, 4, 2, 5};
-            int[] crr = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5 ,6};
+            int[] crr = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5 ,5};
 
             int aCnt = 0, bCnt = 0, cCnt = 0;
 
@@ -29,8 +29,7 @@ public class PrepairTest {
                 if(answers[i] == crr[i % crr.length]) cCnt ++;
             }
 
-            int max = Math.max(aCnt, bCnt);
-            max = Math.max(max, cCnt);
+            int max = Math.max(aCnt, Math.max(bCnt, cCnt) );
 
             int ansSize = 0;
             if(max == aCnt) ansSize ++;
@@ -41,7 +40,7 @@ public class PrepairTest {
             int ansIdx = 0;
             if(max == aCnt) answer[ansIdx ++] = 1;
             if(max == bCnt) answer[ansIdx ++] = 2;
-            if(max == cCnt) answer[ansIdx ++] = 3;
+            if(max == cCnt) answer[ansIdx] = 3;
 
             return answer;
         }
