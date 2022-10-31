@@ -17,30 +17,41 @@ public class PrepairTest {
                 2번 => 2, 1, 2, 3, 2, 4, 2, 5 반복
                 3번 => 3, 3, 1, 1, 2, 2, 4, 4, 5, 5 반복
              */
-            int[] arr = new int[]{1, 2, 3, 4, 5};
-            int[] brr = new int[]{2, 1, 2, 3, 2, 4, 2, 5};
-            int[] crr = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5 ,5};
+            int n = 3;
 
-            int aCnt = 0, bCnt = 0, cCnt = 0;
+            int[][] patterns = new int[][]{
+                    {1, 2, 3, 4, 5},
+                    {2, 1, 2, 3, 2, 4, 2, 5},
+                    {3, 3, 1, 1, 2, 2, 4, 4, 5, 5}
+            };
+
+            int[] cnt = new int[n];
 
             for(int i = 0 ; i < answers.length ; i ++) {
-                if(answers[i] == arr[i % arr.length]) aCnt ++;
-                if(answers[i] == brr[i % brr.length]) bCnt ++;
-                if(answers[i] == crr[i % crr.length]) cCnt ++;
+                for(int j = 0 ; j < n ; j ++) {
+                    if(answers[i] == patterns[j][i % patterns[j].length]) {
+                        cnt[j] ++;
+                    }
+                }
             }
 
-            int max = Math.max(aCnt, Math.max(bCnt, cCnt) );
+            int max = -1;
+            for(int i = 0 ; i < n ; i ++) {
+                max = Math.max(max, cnt[i]);
+            }
 
             int ansSize = 0;
-            if(max == aCnt) ansSize ++;
-            if(max == bCnt) ansSize ++;
-            if(max == cCnt) ansSize ++;
+            for(int i = 0 ; i < n ; i ++) {
+                if(max == cnt[i]) ansSize ++;
+            }
 
             int[] answer = new int[ansSize];
             int ansIdx = 0;
-            if(max == aCnt) answer[ansIdx ++] = 1;
-            if(max == bCnt) answer[ansIdx ++] = 2;
-            if(max == cCnt) answer[ansIdx] = 3;
+            for(int i = 0 ; i < n; i ++) {
+                if(max == cnt[i]) {
+                    answer[ansIdx ++] = i + 1;
+                }
+            }
 
             return answer;
         }
