@@ -1,5 +1,9 @@
 package Week5.Day20_1101;
 
+interface StatementStrategy {
+    boolean compare(int a, int b);
+}
+
 public class PrimeNumber {
     public static void main(String[] args) {
         PrimeNumber primeNumber = new PrimeNumber();
@@ -10,9 +14,9 @@ public class PrimeNumber {
         System.out.println(primeNumber.isPrimeNumber(23));
     }
 
-    boolean isPrimeNumber(int x) {
-        for(int i = 2 ; someOperation(i, x) ; i ++) {
-            if(x % i == 0) {
+    boolean isPrimeNumber(int num, StatementStrategy stmt) {
+        for(int i = 2 ; stmt.compare(i, num) ; i ++) {
+            if(num % i == 0) {
                 return false;
             }
         }
