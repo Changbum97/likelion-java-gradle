@@ -16,23 +16,25 @@ public class RemoveMultipleOf {
         public int solution(int n) {
             int answer = 0;
 
-            List<Integer> list = new ArrayList<>();
+            List<Integer> nums = new ArrayList<>();
             for(int i = 2 ; i <= n ; i ++) {
-                list.add(i);
+                nums.add(i);
             }
 
-            for(int i = 0 ; i < list.size() ; i ++) {
-                if(list.get(i) % 2 == 0 && list.get(i) != 2) {
-                    list.remove(i);
+            /*
+            for(int i = 0 ; i < nums.size() ; i ++) {
+                if(nums.get(i) % 2 == 0 && nums.get(i) != 2) {
+                    nums.remove(i);
                 }
             }
+            */
 
-            System.out.println("2의 배수 지우고 남은 개수 : " + list.size());
+            // removeIf 활용
+            nums.removeIf(num -> num % 2 == 0 && num != 2);
+
+            System.out.println("2의 배수 지우고 남은 개수 : " + nums.size());
             System.out.print("남은 수 : ");
-            for(int num : list) {
-                System.out.print(num + " ");
-            }
-            System.out.println();
+            System.out.println(nums);
 
             return answer;
         }
