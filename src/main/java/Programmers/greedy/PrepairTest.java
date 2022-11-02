@@ -2,6 +2,9 @@ package Programmers.greedy;
 
 import java.util.Arrays;
 
+/**
+ * 모의 고사
+ */
 public class PrepairTest {
     public static void main(String[] args) {
         Solution s = new Solution();
