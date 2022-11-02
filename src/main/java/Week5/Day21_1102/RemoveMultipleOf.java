@@ -22,7 +22,7 @@ public class RemoveMultipleOf {
             }
 
             for(int i = 0 ; i < list.size() ; i ++) {
-                if(list.get(i) % 2 == 0) {
+                if(list.get(i) % 2 == 0 && list.get(i) != 2) {
                     list.remove(i);
                 }
             }
