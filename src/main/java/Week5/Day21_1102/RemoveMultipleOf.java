@@ -1,6 +1,7 @@
 package Week5.Day21_1102;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -9,32 +10,28 @@ public class RemoveMultipleOf {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        s.solution(50);
+        System.out.println(s.solution(50));
+        System.out.println(s.solution(10));
+        System.out.println(s.solution(5));
     }
 
     static class Solution {
         public int solution(int n) {
+            int answer = 0;
 
-            List<Integer> nums = new ArrayList<>();
+            boolean[] isPrime = new boolean[n + 1];
+            Arrays.fill(isPrime, true);
+
             for(int i = 2 ; i <= n ; i ++) {
-                nums.add(i);
-            }
+                if(isPrime[i] == false) continue;
 
-            for(int j = 2 ; j * j <= n ; j ++) {
-                for(int i = 0 ; i < nums.size() ; i ++) {
-                    if(nums.get(i) % j == 0 && nums.get(i) != j) {
-                        nums.remove(i);
-                    }
+                answer ++;
+                for(int j = i * 2 ; j <= n ; j += i) {
+                    isPrime[j] = false;
                 }
             }
 
-            // removeIf 활용
-            // nums.removeIf(num -> num % 2 == 0 && num != 2);
-
-            System.out.println("남은 개수 : " + nums.size());
-            System.out.println("남은 수 : " + nums);
-
-            return nums.size();
+            return answer;
         }
     }
 }
