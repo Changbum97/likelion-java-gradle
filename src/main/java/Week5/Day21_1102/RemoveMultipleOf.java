@@ -12,7 +12,7 @@ public class RemoveMultipleOf {
         Solution s = new Solution();
         System.out.println(s.solution(50));
         System.out.println(s.solution(10));
-        System.out.println(s.solution(10000000));
+        System.out.println(s.solution(5));
     }
 
     static class Solution {
@@ -22,14 +22,17 @@ public class RemoveMultipleOf {
             boolean[] isPrime = new boolean[n + 1];
             Arrays.fill(isPrime, true);
 
+            System.out.print("소수 : ");
             for(int i = 2 ; i <= n ; i ++) {
                 if(isPrime[i] == false) continue;
 
+                System.out.print(i + " ");
                 answer ++;
                 for(int j = i * 2 ; j <= n ; j += i) {
                     isPrime[j] = false;
                 }
             }
+            System.out.println();
 
             return answer;
         }
