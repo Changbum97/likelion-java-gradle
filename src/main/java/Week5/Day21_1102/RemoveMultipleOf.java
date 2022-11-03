@@ -12,7 +12,7 @@ public class RemoveMultipleOf {
         Solution s = new Solution();
         System.out.println(s.solution(50));
         System.out.println(s.solution(10));
-        System.out.println(s.solution(5));
+        System.out.println(s.solution(10000000));
     }
 
     static class Solution {
