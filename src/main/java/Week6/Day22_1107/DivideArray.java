@@ -1,8 +1,7 @@
 package Week6.Day22_1107;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.PriorityQueue;
 
 public class DivideArray {
     public static void main(String[] args) {
@@ -15,23 +14,23 @@ public class DivideArray {
 
     static class Solution {
         public int[] solution(int[] arr, int divisor) {
-            List<Integer> answerList = new ArrayList<>();
+            PriorityQueue<Integer> pq = new PriorityQueue<>();
             for(int i = 0 ; i < arr.length ; i ++) {
                 if(arr[i] % divisor == 0) {
-                    answerList.add(arr[i]);
+                    pq.add(arr[i]);
                 }
             }
 
-            if (answerList.isEmpty()) {
+            if (pq.isEmpty()) {
                 return new int[]{-1};
             } else {
-                int[] answer = new int[answerList.size()];
+                int[] answer = new int[pq.size()];
                 int idx = 0;
 
-                for(int num : answerList) {
-                    answer[idx ++] = num;
+                while(!pq.isEmpty()) {
+                    answer[idx ++] = pq.poll();
                 }
-                Arrays.sort(answer);
+
                 return answer;
             }
         }
