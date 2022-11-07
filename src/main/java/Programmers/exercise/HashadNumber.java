@@ -8,20 +8,19 @@ public class HashadNumber {
         System.out.println(s.solution(11));
         System.out.println(s.solution(12));
         System.out.println(s.solution(13));
-        System.out.println(s.solution(678));
     }
 
     static class Solution{
         public boolean solution(int x) {
-            int sumOfDigit = 0;
+            int sum = 0;
 
             int temp = x;
             while(temp != 0) {
-                sumOfDigit += temp % 10;
+                sum += temp % 10;
                 temp /= 10;
             }
 
-            if(x % sumOfDigit == 0) {
+            if(x % sum == 0) {
                 return true;
             }
             return false;
