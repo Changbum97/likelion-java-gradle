@@ -137,6 +137,12 @@
 - 알고리즘 - 탐색
   - 순차 탐색
   - 이진 탐색
+
+## Day24 (11/09 수)
+- 알고리즘 - 선택 정렬
+  - interface, lambda를 사용해 오름차순 정렬, 내림차순 정렬 구현
+  - Function, BiFunction을 사용해 오름차순 정렬, 내림차순 정렬 구현
+  - BiPredicate를 사용해 오름차순 정렬, 내림차순 정렬 구현
     
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
