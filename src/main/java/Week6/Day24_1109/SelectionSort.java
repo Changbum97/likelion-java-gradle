@@ -10,6 +10,9 @@ public class SelectionSort {
     public static void main(String[] args) {
         int[] arr = new int[]{2, 7, 4, 9, 10, 223, 111, 23, 3, 39};
 
+        // arr을 넘기면 주소값이 넘어가서 기존의 arr 배열도 수정됨
+        // => arr.clone()을 넘겨서 기존 arr 배열 유지
+
         // 오름차순 정렬 => arr[idx] > arr[j]일때 교환 => 작은 수가 앞으로
         int[] asc = selectionSort(arr.clone(), (a, b) -> a > b);
 
