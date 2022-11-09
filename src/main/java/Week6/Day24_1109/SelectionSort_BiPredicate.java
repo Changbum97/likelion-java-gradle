@@ -3,7 +3,7 @@ package Week6.Day24_1109;
 import java.util.Arrays;
 import java.util.function.BiPredicate;
 
-public class SelectionSort_UsePredicated {
+public class SelectionSort_BiPredicate {
 
     public static void main(String[] args) {
         int[] arr = new int[]{2, 7, 4, 9, 10, 223, 111, 23, 3, 39};
