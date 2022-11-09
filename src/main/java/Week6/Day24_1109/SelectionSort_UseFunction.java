@@ -8,6 +8,9 @@ public class SelectionSort_UseFunction {
     public static void main(String[] args) {
         int[] arr = new int[]{2, 7, 4, 9, 10, 223, 111, 23, 3, 39};
 
+        // Function<Integer[], Boolean> fn = (arr1) -> arr1[0] > arr1[1];
+        // System.out.println(fn.apply(new Integer[]{10, 20}));
+
         // 오름차순 정렬
         int[] asc = selectionSort(arr.clone(), (a, b) -> a > b);
 
