@@ -11,19 +11,21 @@ public class SelectionSort {
         int n = arr.length;
         for(int i = 0 ; i < n - 1; i ++) {
             int min = arr[i];
-            int idx = i;
+            int minIdx = i;
 
             for(int j = i + 1 ; j < n ; j ++) {
                 if(min > arr[j]) {
                     min = arr[j];
-                    idx = j;
+                    minIdx = j;
                 }
             }
 
-            if(i != idx) {
+            System.out.println(i + " : " + minIdx);
+
+            if(i != minIdx) {
                 int temp = arr[i];
-                arr[i] = arr[idx];
-                arr[idx] = temp;
+                arr[i] = arr[minIdx];
+                arr[minIdx] = temp;
             }
         }
 
