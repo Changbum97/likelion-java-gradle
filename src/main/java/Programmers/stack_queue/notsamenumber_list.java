@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 프로그래머스 같은 숫자는 싫어
  */
-public class notsamenumber {
+public class notsamenumber_list {
 
     public static void main(String[] args) {
         Solution s = new Solution();
