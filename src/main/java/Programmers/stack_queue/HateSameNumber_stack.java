@@ -3,7 +3,7 @@ package Programmers.stack_queue;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class NotSameNumber_stack {
+public class HateSameNumber_stack {
     public static void main(String[] args) {
         Solution s = new Solution();
         System.out.println(Arrays.toString(s.solution(new int[]{1, 1, 3, 3, 0, 1, 1})));
