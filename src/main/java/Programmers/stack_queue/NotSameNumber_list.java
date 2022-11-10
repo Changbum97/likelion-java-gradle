@@ -1,9 +1,14 @@
 package Programmers.stack_queue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Stack;
+import java.util.List;
 
-public class notsamenumber_stack {
+/**
+ * 프로그래머스 같은 숫자는 싫어
+ */
+public class NotSameNumber_list {
+
     public static void main(String[] args) {
         Solution s = new Solution();
         System.out.println(Arrays.toString(s.solution(new int[]{1, 1, 3, 3, 0, 1, 1})));
@@ -12,19 +17,19 @@ public class notsamenumber_stack {
 
     static class Solution {
         public int[] solution(int[] arr) {
-            Stack<Integer> answerStack = new Stack<>();
-            answerStack.push(arr[0]);
+            List<Integer> answerList = new ArrayList<>();
+            answerList.add(arr[0]);
 
             for(int i = 1 ; i < arr.length ; i ++) {
-                if(answerStack.peek() != arr[i]) {
-                    answerStack.push(arr[i]);
+                if(answerList.get( answerList.size() - 1 ) != arr[i]) {
+                    answerList.add(arr[i]);
                 }
             }
 
-            int[] answer = new int[answerStack.size()];
-            int idx = answerStack.size();
-            while(!answerStack.isEmpty()) {
-                answer[-- idx] = answerStack.pop();
+            int[] answer = new int[answerList.size()];
+            int idx = 0;
+            for(int num : answerList) {
+                answer[idx ++] = num;
             }
             return answer;
         }
