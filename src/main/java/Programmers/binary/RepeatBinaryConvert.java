@@ -1,7 +1,10 @@
-package Week6.Day26_1111;
+package Programmers.binary;
 
 import java.util.Arrays;
 
+/**
+ * 프로그래머스 이진 변환 반복하기
+ */
 public class RepeatBinaryConvert {
     public static void main(String[] args) {
         Solution s = new Solution();
