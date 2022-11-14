@@ -14,13 +14,20 @@ public class SieveOfEratosthenesReview {
                 arr[i] = i;
             }
 
-            for(int j = 4 ; j <= n ; j += 2) {
-                arr[j] = 0;
+            for(int i = 2 ; i * i <= n ; i ++) {
+                if(arr[i] == 0) continue;
+                for(int j = i * 2 ; j <= n ; j += i) {
+                    arr[j] = 0;
+                }
             }
 
             for(int j = 1 ; j <= n ; j ++) {
-                System.out.println(j + " " + arr[j]);
+                if(arr[j] != 0) {
+                    System.out.print(arr[j] + " ");
+                    answer ++;
+                }
             }
+            System.out.println();
             return answer;
         }
     }
