@@ -33,11 +33,9 @@ public class QuickSort {
             }
         }
 
-        List<Integer> leftSort = sort(left);
-        List<Integer> rightSort = sort(right);
-        List<Integer> answer = leftSort;
+        List<Integer> answer = sort(left);
         answer.add(pivot);
-        answer.addAll(rightSort);
+        answer.addAll(sort(right));
 
         return answer;
     }
