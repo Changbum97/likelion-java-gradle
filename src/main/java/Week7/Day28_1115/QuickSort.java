@@ -15,12 +15,12 @@ public class QuickSort {
         List<Integer> left = new ArrayList<>();
         List<Integer> right = new ArrayList<>();
 
-        for(int i = start ; i < mid ; i ++) {
-            left.add(arr[i]);
-        }
-
-        for(int i = mid + 1 ; i <= end ; i ++) {
-            right.add(arr[i]);
+        for(int i = start ; i <= end ; i ++) {
+            if(arr[i] < arr[mid]) {
+                left.add(arr[i]);
+            } else {
+                right.add(arr[i]);
+            }
         }
 
         for(int i : left) {
