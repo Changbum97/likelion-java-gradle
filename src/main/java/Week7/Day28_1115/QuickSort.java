@@ -6,29 +6,39 @@ import java.util.List;
 public class QuickSort {
     public static void main(String[] args) {
         int[] arr = new int[]{20, 18, 5, 19, 5, 25, 40, 50};
-        sort(0, 7, arr);
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0 ; i < arr.length ; i ++) {
+            list.add(arr[i]);
+        }
+        list = sort(list);
+        System.out.println(list);
     }
 
-    static void sort(int start, int end, int[] arr) {
-        int mid = (start + end) / 2;
+    static List<Integer> sort(List<Integer> list) {
+        if(list.size() <= 1) return list;
+
+        int mid = list.size() / 2;
+        int pivot = list.get(mid);
 
         List<Integer> left = new ArrayList<>();
         List<Integer> right = new ArrayList<>();
 
-        for(int i = start ; i <= end ; i ++) {
-            if(arr[i] < arr[mid]) {
-                left.add(arr[i]);
+        for(int i = 0 ; i < list.size() ; i ++) {
+            if(i == mid) continue;;
+
+            if(list.get(i) < pivot) {
+                left.add(list.get(i));
             } else {
-                right.add(arr[i]);
+                right.add(list.get(i));
             }
         }
 
-        for(int i : left) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-        for(int i : right) {
-            System.out.print(i + " ");
-        }
+        List<Integer> leftSort = sort(left);
+        List<Integer> rightSort = sort(right);
+        List<Integer> answer = leftSort;
+        answer.add(pivot);
+        answer.addAll(rightSort);
+
+        return answer;
     }
 }
