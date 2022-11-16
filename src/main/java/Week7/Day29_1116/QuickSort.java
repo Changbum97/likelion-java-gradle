@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr = new int[]{20, 18, 5, 19, 40, 50, 5, 25};
+        int[] arr = new int[]{40, 60, 5, 19, 40, 50, 30, 25};
         System.out.println(Arrays.toString(sort(arr)));
     }
 
@@ -18,16 +18,28 @@ public class QuickSort {
                 int temp = arr[left];
                 arr[left] = arr[right];
                 arr[right] = temp;
-            }
-
-            if(arr[left] < pivot) {
                 left ++;
-            }
-            if(arr[right] > pivot) {
                 right --;
             }
 
+            if(arr[left] < pivot) left ++;
+            if(arr[right] > pivot) right --;
         }
+
+        System.out.println("pivot : " + pivot);
+
+        System.out.print("left group : ");
+        for(int i = 0 ; i < left ; i ++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+
+        System.out.print("right group : ");
+        for(int i = left ; i < arr.length ; i ++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+
         return arr;
     }
 }
