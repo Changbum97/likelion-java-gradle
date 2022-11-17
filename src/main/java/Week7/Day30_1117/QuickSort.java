@@ -30,6 +30,6 @@ public class QuickSort {
         }
 
         if(start < right) sort(start, right);
-        if(left > end) sort(left, end);
+        if(left < end) sort(left, end);
     }
 }
