@@ -16,8 +16,7 @@ public class ListSum {
         int size = nums.size();
         if(size == 0) return 0;
 
-        int lastNum = nums.get(size - 1);
-        nums.remove(size - 1);
+        int lastNum = nums.remove(size - 1);
         return lastNum + sum(nums);
     }
 }
