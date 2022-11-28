@@ -1,21 +1,28 @@
 package Week9.Day36;
 
-public class printAlphabet {
-    public static void main(String[] args) {
-        int cnt = 0;
-        for(char i = 0 ; i < 26 ; i ++) {
-            System.out.printf("%c ", i+'A');
-            cnt ++;
-        }
-        System.out.println("\n" + cnt);
+import java.util.Arrays;
 
-        cnt = 0;
-        for(char i = 0 ; i < 26 ; i ++) {
-            for(char j = 0 ; j < 26 ; j ++) {
-                System.out.printf("%c%c ", i+'A', j+'A');
-                cnt ++;
-            }
+public class printAlphabet {
+
+    public static void main(String[] args) {
+        int n = 2;
+
+        char[] c = new char[n];
+        Arrays.fill(c, 'A');
+        print(0, c);
+    }
+
+    static void print(int nowIdx,  char[] c) {
+        if(nowIdx == c.length) {
+            System.out.println(Arrays.toString(c));
         }
-        System.out.println("\n" + cnt);
+
+        if(nowIdx < c.length) {
+            while(c[nowIdx] <= 'Z') {
+                print(nowIdx + 1, c);
+                c[nowIdx] ++;
+            }
+            c[nowIdx] = 'A';
+        }
     }
 }
