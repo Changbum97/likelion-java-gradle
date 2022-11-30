@@ -199,6 +199,14 @@
 
 ## Day 38 (11/30)
 - 알고리즘 - LCA
+- lambda, stream, filter, map, :: 활용 예제
+- stream, reduce 활용 예제
+- Optional 예제
+  - Optional.empty()
+  - Optional.of()
+  - .get()
+  - .orElseThrow()
+  - Optioanl.ofNullable().orElse()
     
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
