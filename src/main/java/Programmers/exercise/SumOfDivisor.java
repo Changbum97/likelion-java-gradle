@@ -1,5 +1,8 @@
 package Programmers.exercise;
 
+/**
+ * 프로그래머스 약수의 합
+ */
 public class SumOfDivisor {
     public static void main(String[] args) {
         Solution s = new Solution();
