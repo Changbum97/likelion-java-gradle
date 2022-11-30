@@ -71,12 +71,6 @@ public class lambdaPractice {
         boolean isLikeAlgorithm;
         boolean isLikeSpringBoot;
 
-        public Teacher(String name, boolean isLikeAlgorithm, boolean isLikeSpringBoot) {
-            this.name = name;
-            this.isLikeAlgorithm = isLikeAlgorithm;
-            this.isLikeSpringBoot = isLikeSpringBoot;
-        }
-
         public int cntNameDigit() {
             return this.name.length();
         }
