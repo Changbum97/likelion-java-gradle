@@ -3,24 +3,29 @@ package Week10.Day41;
 public class MakeHeap {
     public static void main(String[] args) {
         int[] arr = new int[]{1, 8, 5, 7, 3, 2, 4, 6, 9};
-        int[] heap = new int[arr.length + 1];
-        heap[1] = arr[0];
+        int[] heap = new int[arr.length ];
+        heap[0] = arr[0];
 
         for(int i = 1 ; i < arr.length ; i ++) {
-            heap[i + 1] = arr[i];
+            heap[i] = arr[i];
 
-            int j = i + 1;
-            while(true) {
-                if(j / 2 == 0 || heap[j / 2] >= heap[j]) break;
+            int childIdx = i;
+            int parentIdx;
 
-                int temp = heap[j];
-                heap[j] = heap[j / 2];
-                heap[j / 2] = temp;
-                j /= 2;
+            while(childIdx > 0) {
+                if(childIdx % 2 == 0) parentIdx = childIdx / 2 - 1;
+                else parentIdx = childIdx / 2;
+
+                if(heap[parentIdx] >= heap[childIdx]) break;
+
+                int temp = heap[parentIdx];
+                heap[parentIdx] = heap[childIdx];
+                heap[childIdx] = temp;
+                childIdx = parentIdx;
             }
         }
 
-        for(int i = 1 ; i <= arr.length ; i ++) {
+        for(int i = 0 ; i < arr.length ; i ++) {
             System.out.print(heap[i] + " ");
         }
     }
