@@ -197,7 +197,7 @@
 ## Day 37 (11/29 화)
 - 알고리즘 - 기수 정렬
 
-## Day 38 (11/30)
+## Day 38 (11/30 수)
 - 알고리즘 - LCA
 - lambda, stream, filter, map, :: 활용 예제
 - stream, reduce 활용 예제
@@ -208,10 +208,13 @@
   - .orElseThrow()
   - Optioanl.ofNullable().orElse()
 
-## Day 39 (12/01)
+## Day 39 (12/01 목)
 - 알고리즘
   - 프로그래머스 명예의 전당 (Priority Queue)
   - 프로그래머스 기사단원의 무기
+
+## Day 41 (12/05 월)
+- 알고리즘 - Heap
     
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
