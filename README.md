@@ -215,6 +215,9 @@
 
 ## Day 41 (12/05 월)
 - 알고리즘 - Heap
+
+## Day42 (12/06 화)
+- 알고리즘 - Heap Sort
     
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
