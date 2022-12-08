@@ -1,8 +1,6 @@
 package Week10.Day44;
 
-import java.util.Arrays;
-
-public class FiboDP {
+public class FiboDPRecursive {
     static long[] dp;
 
     public static void main(String[] args) {
