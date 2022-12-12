@@ -29,7 +29,7 @@ public class UserDaoFactory {
     public DataSource localDataSource() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         Map<String, String> env = System.getenv();
-        dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class);
+        //dataSource.setDriverClass(com.mysql.cj.jdbc.Driver.class); 갑자기 에러 뜸
         dataSource.setUrl(env.get("DB_HOST"));
         dataSource.setUsername(env.get("DB_USER"));
         dataSource.setPassword(env.get("DB_PASSWORD"));
