@@ -4,6 +4,27 @@ public class OptimalStrategy {
     public static void main(String[] args) {
         int[] arr = new int[]{2, 7, 40, 19};
         int n = arr.length;
+
+        int[][] sumUntil = new int[n][n];
+        for(int i = 0 ; i < n ; i ++) {
+            for(int j = i ; j < n ; j ++) {
+                if(j == 0) {
+                    sumUntil[i][j] = arr[j];
+                } else {
+                    sumUntil[i][j] = sumUntil[i][j - 1] + arr[j];
+                }
+            }
+        }
+
+        for(int i = 0 ; i < n ; i ++) {
+            for(int j = 0 ; j < n ; j ++) {
+                System.out.print(sumUntil[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+
+
         Pair[][] dp = new Pair[n][n];
 
         for(int i = 0 ; i < n ; i ++) {
