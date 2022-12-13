@@ -10,6 +10,15 @@ public class OptimalStrategy {
             dp[i][i] = new Pair(arr[i], 0);
         }
 
+        for(int i = 0 ; i < n - 1 ; i ++) {
+            int j = i + 1;
+            if(arr[i] > arr[j]) {
+                dp[i][j] = new Pair(arr[i], arr[j]);
+            } else {
+                dp[i][j] = new Pair(arr[j], arr[i]);
+            }
+        }
+
         for(int i = 0 ; i < n ; i ++) {
             for(int j = 0 ; j < n ; j ++) {
                 if(dp[i][j] == null) {
