@@ -232,6 +232,10 @@
 ## Day46 (12/12 월)
 - 알고리즘 - DP
   - 최소 비용 경로(Min Cost Path)
+
+## Day48 (12/14 수)
+- 알고리즘 - DP
+  - 최적의 전략 찾기(Optimal Strategy)
     
 ## 미니 프로젝트 1. MySQL을 이용한 대용량 데이터 분석 (HospitalExercise)
 - 10/12 수
